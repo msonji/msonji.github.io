@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Mohammad Sonji — Computer Science PhD Candidate (UVA). GPU systems, interconnect/memory, HPC.">
   <meta name="author" content="Mohammad Sonji">
-
+  
   <link rel="shortcut icon" href="profile.jpeg">
   <title>Mohammad Sonji</title>
-
+  
   <!-- Distinctive Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-
+  
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/248028fadd.js" crossorigin="anonymous"></script>
-
+  
   <style>
     :root {
       --color-bg: #fafaf8;
@@ -27,29 +27,29 @@
       --color-border: #e0e0e0;
       --color-surface: #ffffff;
       --color-shadow: rgba(0, 0, 0, 0.06);
-
+      
       --font-serif: 'Libre Baskerville', Georgia, serif;
       --font-sans: 'DM Sans', -apple-system, sans-serif;
       --font-mono: 'JetBrains Mono', 'Courier New', monospace;
-
+      
       --spacing-xs: 0.5rem;
       --spacing-sm: 1rem;
       --spacing-md: 2rem;
       --spacing-lg: 3rem;
       --spacing-xl: 5rem;
     }
-
+    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
+    
     html {
       scroll-behavior: smooth;
       font-size: 16px;
     }
-
+    
     body {
       font-family: var(--font-sans);
       background: var(--color-bg);
@@ -58,7 +58,7 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-
+    
     /* Header & Hero */
     .hero {
       min-height: 100vh;
@@ -72,60 +72,19 @@
       opacity: 0;
       animation: fadeInUp 1s ease-out forwards;
     }
-
-    /* NEW: title + name + image row */
-    .hero-title {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--color-accent);
-      margin-bottom: var(--spacing-sm);
-      opacity: 0;
-      animation: fadeInUp 1s ease-out 0.3s forwards;
-    }
-
-    .hero-name-row {
-      display: flex;
-      align-items: center;         /* aligns image relative to the name */
-      justify-content: space-between;
-      gap: var(--spacing-lg);
-      flex-wrap: wrap;
-      margin-bottom: var(--spacing-md);
-    }
-
-    .hero-name {
-      font-family: var(--font-serif);
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-
-      margin: 0;                   /* IMPORTANT: avoid default h1 margins */
-      opacity: 0;
-      animation: fadeInUp 1s ease-out 0.2s forwards;
-    }
-
+    
     .profile-image {
-      width: clamp(170px, 16vw, 240px);
-      height: clamp(170px, 16vw, 240px);
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid var(--color-surface);
       box-shadow: 0 4px 20px var(--color-shadow);
-
-      margin: 0;                   /* IMPORTANT: remove old margin-bottom */
-
-      /* nudge DOWN: increase this if still "too high" */
-      position: relative;
-      top: 28px;
-
+      margin-bottom: var(--spacing-md);
       opacity: 0;
       animation: fadeInUp 1s ease-out 0.1s forwards;
-      flex: 0 0 auto;
     }
-
+    
     @keyframes fadeInUp {
       to {
         opacity: 1;
@@ -135,7 +94,30 @@
         transform: translateY(20px);
       }
     }
-
+    
+    .hero-name {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: var(--spacing-sm);
+      letter-spacing: -0.02em;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.2s forwards;
+    }
+    
+    .hero-title {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-accent);
+      margin-bottom: var(--spacing-md);
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.3s forwards;
+    }
+    
     .hero-about {
       max-width: 680px;
       font-size: 1.125rem;
@@ -144,28 +126,28 @@
       opacity: 0;
       animation: fadeInUp 1s ease-out 0.5s forwards;
     }
-
+    
     .hero-about p {
       margin-bottom: var(--spacing-md);
     }
-
+    
     .hero-about a {
       color: var(--color-accent);
       text-decoration: none;
       border-bottom: 1px solid transparent;
       transition: border-color 0.2s ease;
     }
-
+    
     .hero-about a:hover {
       border-bottom-color: var(--color-accent);
     }
-
+    
     .hero-interests {
       font-size: 1rem;
       color: var(--color-text-muted);
       font-style: italic;
     }
-
+    
     /* Contact Grid */
     .contact-grid {
       display: grid;
@@ -175,7 +157,7 @@
       opacity: 0;
       animation: fadeInUp 1s ease-out 0.7s forwards;
     }
-
+    
     .contact-item {
       display: flex;
       align-items: center;
@@ -189,19 +171,19 @@
       text-decoration: none;
       color: var(--color-text);
     }
-
+    
     .contact-item:hover {
       border-color: var(--color-accent);
       transform: translateY(-2px);
       box-shadow: 0 4px 12px var(--color-shadow);
     }
-
+    
     .contact-item i {
       color: var(--color-accent);
       width: 20px;
       text-align: center;
     }
-
+    
     /* Navigation */
     .nav {
       position: fixed;
@@ -212,7 +194,7 @@
       display: flex;
       gap: var(--spacing-md);
     }
-
+    
     .nav a {
       font-family: var(--font-mono);
       font-size: 0.75rem;
@@ -224,12 +206,12 @@
       padding: var(--spacing-xs) var(--spacing-sm);
       border-bottom: 2px solid transparent;
     }
-
+    
     .nav a:hover {
       color: var(--color-accent);
       border-bottom-color: var(--color-accent);
     }
-
+    
     /* Section Styling */
     .section {
       min-height: 100vh;
@@ -237,19 +219,19 @@
       max-width: 1200px;
       margin: 0 auto;
     }
-
+    
     .section-header {
       margin-bottom: var(--spacing-xl);
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.6s ease-out;
     }
-
+    
     .section-header.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
+    
     .section-number {
       font-family: var(--font-mono);
       font-size: 0.75rem;
@@ -258,7 +240,7 @@
       letter-spacing: 0.15em;
       margin-bottom: var(--spacing-xs);
     }
-
+    
     .section-title {
       font-family: var(--font-serif);
       font-size: clamp(2rem, 5vw, 3.5rem);
@@ -266,20 +248,20 @@
       line-height: 1.2;
       letter-spacing: -0.02em;
     }
-
+    
     .section-divider {
       height: 2px;
       width: 80px;
       background: var(--color-accent);
       margin-top: var(--spacing-md);
     }
-
+    
     /* Publications */
     .pub-grid {
       display: grid;
       gap: var(--spacing-lg);
     }
-
+    
     .pub-item {
       padding: var(--spacing-md);
       background: var(--color-surface);
@@ -289,18 +271,18 @@
       opacity: 0;
       transform: translateY(20px);
     }
-
+    
     .pub-item.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
+    
     .pub-item:hover {
       border-left-color: var(--color-accent);
       box-shadow: 0 4px 20px var(--color-shadow);
       transform: translateX(4px);
     }
-
+    
     .pub-title {
       font-family: var(--font-serif);
       font-size: 1.25rem;
@@ -308,41 +290,41 @@
       line-height: 1.4;
       margin-bottom: var(--spacing-sm);
     }
-
+    
     .pub-title a {
       color: var(--color-text);
       text-decoration: none;
       transition: color 0.2s ease;
     }
-
+    
     .pub-title a:hover {
       color: var(--color-accent);
     }
-
+    
     .pub-meta {
       font-size: 0.95rem;
       color: var(--color-text-muted);
       margin-bottom: var(--spacing-sm);
       line-height: 1.6;
     }
-
+    
     .pub-meta b {
       color: var(--color-text);
       font-weight: 600;
     }
-
+    
     .pub-venue {
       font-weight: 600;
       color: var(--color-accent);
     }
-
+    
     .pub-chips {
       display: flex;
       gap: var(--spacing-xs);
       flex-wrap: wrap;
       margin-top: var(--spacing-sm);
     }
-
+    
     .chip {
       display: inline-flex;
       align-items: center;
@@ -357,25 +339,25 @@
       color: var(--color-text);
       transition: all 0.2s ease;
     }
-
+    
     .chip:hover {
       background: var(--color-accent);
       color: white;
       border-color: var(--color-accent);
       transform: translateY(-1px);
     }
-
+    
     .chip i {
       font-size: 0.85em;
     }
-
+    
     /* Experience Cards */
     .exp-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: var(--spacing-md);
     }
-
+    
     .exp-card {
       background: var(--color-surface);
       border: 1px solid var(--color-border);
@@ -385,42 +367,42 @@
       opacity: 0;
       transform: translateY(20px);
     }
-
+    
     .exp-card.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
+    
     .exp-card:hover {
       box-shadow: 0 8px 30px var(--color-shadow);
       transform: translateY(-4px);
     }
-
+    
     .exp-card.research {
       border-top: 4px solid #0066cc;
     }
-
+    
     .exp-card.teaching {
       border-top: 4px solid #ff6b35;
     }
-
+    
     .exp-header {
       margin-bottom: var(--spacing-md);
     }
-
+    
     .exp-icon {
       font-size: 1.5rem;
       margin-bottom: var(--spacing-sm);
     }
-
+    
     .exp-card.research .exp-icon {
       color: #0066cc;
     }
-
+    
     .exp-card.teaching .exp-icon {
       color: #ff6b35;
     }
-
+    
     .exp-role {
       font-family: var(--font-serif);
       font-size: 1.35rem;
@@ -428,13 +410,13 @@
       margin-bottom: var(--spacing-xs);
       line-height: 1.3;
     }
-
+    
     .exp-org {
       font-size: 1rem;
       color: var(--color-text-muted);
       margin-bottom: var(--spacing-xs);
     }
-
+    
     .exp-date {
       font-family: var(--font-mono);
       font-size: 0.8rem;
@@ -442,19 +424,19 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-
+    
     .exp-description {
       font-size: 0.95rem;
       color: var(--color-text-muted);
       margin-bottom: var(--spacing-sm);
       line-height: 1.6;
     }
-
+    
     .exp-list {
       list-style: none;
       padding-left: 0;
     }
-
+    
     .exp-list li {
       position: relative;
       padding-left: 1.5rem;
@@ -462,7 +444,7 @@
       font-size: 0.9rem;
       line-height: 1.5;
     }
-
+    
     .exp-list li::before {
       content: "→";
       position: absolute;
@@ -470,18 +452,18 @@
       color: var(--color-accent);
       font-weight: 600;
     }
-
+    
     .exp-list a {
       color: var(--color-accent);
       text-decoration: none;
       border-bottom: 1px solid transparent;
       transition: border-color 0.2s ease;
     }
-
+    
     .exp-list a:hover {
       border-bottom-color: var(--color-accent);
     }
-
+    
     /* Footer */
     .footer {
       padding: var(--spacing-xl) var(--spacing-md) var(--spacing-md);
@@ -489,12 +471,12 @@
       color: var(--color-text-muted);
       font-size: 0.85rem;
     }
-
+    
     .footer-content {
       max-width: 1200px;
       margin: 0 auto;
     }
-
+    
     /* Scroll Progress Bar */
     .scroll-progress {
       position: fixed;
@@ -506,7 +488,7 @@
       z-index: 9999;
       transition: width 0.1s ease-out;
     }
-
+    
     /* Responsive */
     @media (max-width: 768px) {
       .nav {
@@ -516,43 +498,31 @@
         background: var(--color-surface);
         border-bottom: 1px solid var(--color-border);
       }
-
-      /* NEW mobile behavior: image above name */
-      .hero-name-row {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
+      
       .profile-image {
-        order: -1;
-        position: relative;
-        top: 0;
-
-        width: 140px;
-        height: 140px;
-        margin-bottom: var(--spacing-md);
+        width: 120px;
+        height: 120px;
       }
-
+      
       .hero {
         padding-top: var(--spacing-md);
       }
-
+      
       .contact-grid {
         grid-template-columns: 1fr;
       }
-
+      
       .exp-grid {
         grid-template-columns: 1fr;
       }
     }
-
+    
     /* Staggered Animation Delays */
     .pub-item:nth-child(1) { transition-delay: 0.1s; }
     .pub-item:nth-child(2) { transition-delay: 0.2s; }
     .pub-item:nth-child(3) { transition-delay: 0.3s; }
     .pub-item:nth-child(4) { transition-delay: 0.4s; }
-
+    
     .exp-card:nth-child(1) { transition-delay: 0.1s; }
     .exp-card:nth-child(2) { transition-delay: 0.2s; }
   </style>
@@ -561,7 +531,7 @@
 <body>
   <!-- Scroll Progress Bar -->
   <div class="scroll-progress" id="scrollProgress"></div>
-
+  
   <!-- Navigation -->
   <nav class="nav">
     <a href="#about">About</a>
@@ -571,13 +541,10 @@
 
   <!-- Hero Section -->
   <section class="hero" id="about">
+    <img src="profile.jpeg" alt="Mohammad Sonji" class="profile-image">
     <div class="hero-title">Computer Science PhD Candidate</div>
-
-    <div class="hero-name-row">
-      <h1 class="hero-name">Mohammad Sonji</h1>
-      <img src="profile.jpeg" alt="Mohammad Sonji" class="profile-image">
-    </div>
-
+    <h1 class="hero-name">Mohammad Sonji</h1>
+    
     <div class="hero-about">
       <p>
         I am currently a <em>PhD</em> student in the <a href="https://insight-cal.github.io/team/" target="_blank" rel="noopener noreferrer">Insight Lab</a>
@@ -585,43 +552,43 @@
         I hold a <em>Master of Science</em> in <strong>Computer Science</strong> from the American University of Beirut, advised by
         <a href="https://ielhajj.github.io/" target="_blank" rel="noopener noreferrer">Professor Izzat El Hajj</a>.
       </p>
-
+      
       <p class="hero-interests">
         Research interests: GPU systems (utilization, multi-tenancy, interconnect/memory behavior), high-performance computing, and performance analysis/modeling.
       </p>
     </div>
-
+    
     <div class="contact-grid">
       <div class="contact-item">
         <i class="fa fa-university"></i>
         <span>University of Virginia</span>
       </div>
-
+      
       <div class="contact-item">
         <i class="fa fa-map-marker"></i>
         <span>Charlottesville, VA 22903</span>
       </div>
-
+      
       <a href="mailto:npv2tk@virginia.edu" class="contact-item">
         <i class="fa fa-envelope"></i>
         <span>npv2tk@virginia.edu</span>
       </a>
-
+      
       <a href="https://scholar.google.com/citations?hl=en&user=a3n1qFoAAAAJ" target="_blank" rel="noopener noreferrer" class="contact-item">
         <i class="fa-brands fa-google-scholar"></i>
         <span>Google Scholar</span>
       </a>
-
+      
       <a href="MohammadSonji_CV.pdf" target="_blank" rel="noopener noreferrer" class="contact-item">
         <i class="fa fa-file-pdf-o"></i>
         <span>Curriculum Vitae</span>
       </a>
-
+      
       <a href="https://www.linkedin.com/in/mohammad-sonji" target="_blank" rel="noopener noreferrer" class="contact-item">
         <i class="fa fa-linkedin"></i>
         <span>LinkedIn</span>
       </a>
-
+      
       <a href="https://github.com/msonji" target="_blank" rel="noopener noreferrer" class="contact-item">
         <i class="fa fa-github"></i>
         <span>GitHub</span>
@@ -636,7 +603,7 @@
       <h2 class="section-title">Publications</h2>
       <div class="section-divider"></div>
     </div>
-
+    
     <div class="pub-grid">
       <article class="pub-item">
         <div class="pub-title">
@@ -660,7 +627,7 @@
           </a>
         </div>
       </article>
-
+      
       <article class="pub-item">
         <div class="pub-title">
           <a href="https://scholar.google.com/scholar?q=Are%20We%20There%20Yet%3F%20Predicting%20if%20Executing%20Applications%20are%20Near%20Completion" target="_blank" rel="noopener noreferrer">
@@ -678,7 +645,7 @@
           </a>
         </div>
       </article>
-
+      
       <article class="pub-item">
         <div class="pub-title">
           <a href="https://doi.org/10.1109/IPDPSW66978.2025.00044" target="_blank" rel="noopener noreferrer">
@@ -695,7 +662,7 @@
           </a>
         </div>
       </article>
-
+      
       <article class="pub-item">
         <div class="pub-title">
           <a href="https://doi.org/10.1109/IPDPSW66978.2025.00124" target="_blank" rel="noopener noreferrer">
@@ -712,6 +679,12 @@
           </a>
         </div>
       </article>
+      
+      <!-- <div class="pub-item" style="background: transparent; border: none; box-shadow: none; padding-left: 0;">
+        <p style="color: var(--color-text-muted); font-style: italic;">
+          Full publication list available in <a href="img/MohammadSonji_CV.pdf" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent); text-decoration: none; border-bottom: 1px solid var(--color-accent);">CV</a>
+        </p>
+      </div> -->
     </div>
   </section>
 
@@ -722,7 +695,7 @@
       <h2 class="section-title">Experience</h2>
       <div class="section-divider"></div>
     </div>
-
+    
     <div class="exp-grid">
       <article class="exp-card research">
         <div class="exp-header">
@@ -733,18 +706,18 @@
           <div class="exp-org">American University of Beirut & Hewlett Packard Labs</div>
           <div class="exp-date">Jun 2022 – Jul 2024</div>
         </div>
-
+        
         <p class="exp-description">
           Worked on performance variability and performance modeling, and systems for heterogeneous/serverless computing.
         </p>
-
+        
         <ul class="exp-list">
           <li>Heterogeneous serverless graph computing</li>
           <li>Applications' performance variability and modeling</li>
           <li>Execution/power/performance prediction</li>
         </ul>
       </article>
-
+      
       <article class="exp-card teaching">
         <div class="exp-header">
           <div class="exp-icon">
@@ -754,12 +727,12 @@
           <div class="exp-org">University of Virginia</div>
           <div class="exp-date">2025 – Present</div>
         </div>
-
+        
         <ul class="exp-list">
           <li>Spring 2026: <a href="https://adwaitjog.github.io/teach/uva_6501_s26.html" target="_blank" rel="noopener noreferrer">CS 6501: GPU Architectures</a></li>
           <li>Fall 2025: <a href="https://adwaitjog.github.io/teach/uva_4444_f25.html" target="_blank" rel="noopener noreferrer">CS 4444: Introduction to Parallel Computing</a></li>
         </ul>
-
+        
         <div style="margin-top: var(--spacing-md); padding-top: var(--spacing-md); border-top: 1px solid var(--color-border);">
           <div class="exp-org" style="margin-bottom: var(--spacing-sm);">American University of Beirut</div>
           <ul class="exp-list">
@@ -791,13 +764,13 @@
       const scrolled = (winScroll / height) * 100;
       document.getElementById('scrollProgress').style.width = scrolled + '%';
     });
-
+    
     // Intersection Observer for fade-in animations
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
     };
-
+    
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -805,12 +778,12 @@
         }
       });
     }, observerOptions);
-
+    
     // Observe all animated elements
     document.querySelectorAll('.section-header, .pub-item, .exp-card').forEach(el => {
       observer.observe(el);
     });
-
+    
     // Smooth scroll for navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
