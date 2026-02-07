@@ -1,353 +1,802 @@
-<!--
-author: Boostraptheme
-author URL: https://boostraptheme.com
-License: Creative Commons Attribution 4.0 Unported
-License URL: https://creativecommons.org/licenses/by/4.0/
--->
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
-
-	<link rel="shortcut icon" href="img/profile.jpeg">
-	<title>Mohammad Sonji</title>
-
-	<!-- Global stylesheets -->
-	<link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900"
-		rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
-		rel="stylesheet">
-	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<link href="css/devicons/css/devicons.min.css" rel="stylesheet">
-	<link href="css/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
-	<script src="https://kit.fontawesome.com/248028fadd.js" crossorigin="anonymous"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Mohammad Sonji — Computer Science PhD Candidate (UVA). GPU systems, interconnect/memory, HPC.">
+  <meta name="author" content="Mohammad Sonji">
+  
+  <link rel="shortcut icon" href="profile.jpeg">
+  <title>Mohammad Sonji</title>
+  
+  <!-- Distinctive Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/248028fadd.js" crossorigin="anonymous"></script>
+  
+  <style>
+    :root {
+      --color-bg: #fafaf8;
+      --color-text: #1a1a1a;
+      --color-text-muted: #666666;
+      --color-accent: #0066cc;
+      --color-accent-hover: #0052a3;
+      --color-border: #e0e0e0;
+      --color-surface: #ffffff;
+      --color-shadow: rgba(0, 0, 0, 0.06);
+      
+      --font-serif: 'Libre Baskerville', Georgia, serif;
+      --font-sans: 'DM Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+      
+      --spacing-xs: 0.5rem;
+      --spacing-sm: 1rem;
+      --spacing-md: 2rem;
+      --spacing-lg: 3rem;
+      --spacing-xl: 5rem;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+    
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Header & Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--spacing-xl) var(--spacing-md);
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+    }
+    
+    .profile-image {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--color-surface);
+      box-shadow: 0 4px 20px var(--color-shadow);
+      margin-bottom: var(--spacing-md);
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.1s forwards;
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      from {
+        transform: translateY(20px);
+      }
+    }
+    
+    .hero-name {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: var(--spacing-sm);
+      letter-spacing: -0.02em;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.2s forwards;
+    }
+    
+    .hero-title {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-accent);
+      margin-bottom: var(--spacing-md);
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.3s forwards;
+    }
+    
+    .hero-about {
+      max-width: 680px;
+      font-size: 1.125rem;
+      line-height: 1.8;
+      margin-bottom: var(--spacing-lg);
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.5s forwards;
+    }
+    
+    .hero-about p {
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .hero-about a {
+      color: var(--color-accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+    
+    .hero-about a:hover {
+      border-bottom-color: var(--color-accent);
+    }
+    
+    .hero-interests {
+      font-size: 1rem;
+      color: var(--color-text-muted);
+      font-style: italic;
+    }
+    
+    /* Contact Grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-lg);
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.7s forwards;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      padding: var(--spacing-sm);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: var(--color-text);
+    }
+    
+    .contact-item:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px var(--color-shadow);
+    }
+    
+    .contact-item i {
+      color: var(--color-accent);
+      width: 20px;
+      text-align: center;
+    }
+    
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      padding: var(--spacing-md);
+      z-index: 1000;
+      display: flex;
+      gap: var(--spacing-md);
+    }
+    
+    .nav a {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-bottom: 2px solid transparent;
+    }
+    
+    .nav a:hover {
+      color: var(--color-accent);
+      border-bottom-color: var(--color-accent);
+    }
+    
+    /* Section Styling */
+    .section {
+      min-height: 100vh;
+      padding: var(--spacing-xl) var(--spacing-md);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-header {
+      margin-bottom: var(--spacing-xl);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .section-header.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .section-number {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      letter-spacing: 0.15em;
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    
+    .section-divider {
+      height: 2px;
+      width: 80px;
+      background: var(--color-accent);
+      margin-top: var(--spacing-md);
+    }
+    
+    /* Publications */
+    .pub-grid {
+      display: grid;
+      gap: var(--spacing-lg);
+    }
+    
+    .pub-item {
+      padding: var(--spacing-md);
+      background: var(--color-surface);
+      border-left: 4px solid var(--color-border);
+      border-radius: 0 4px 4px 0;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    .pub-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .pub-item:hover {
+      border-left-color: var(--color-accent);
+      box-shadow: 0 4px 20px var(--color-shadow);
+      transform: translateX(4px);
+    }
+    
+    .pub-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .pub-title a {
+      color: var(--color-text);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    
+    .pub-title a:hover {
+      color: var(--color-accent);
+    }
+    
+    .pub-meta {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--spacing-sm);
+      line-height: 1.6;
+    }
+    
+    .pub-meta b {
+      color: var(--color-text);
+      font-weight: 600;
+    }
+    
+    .pub-venue {
+      font-weight: 600;
+      color: var(--color-accent);
+    }
+    
+    .pub-chips {
+      display: flex;
+      gap: var(--spacing-xs);
+      flex-wrap: wrap;
+      margin-top: var(--spacing-sm);
+    }
+    
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--color-text);
+      transition: all 0.2s ease;
+    }
+    
+    .chip:hover {
+      background: var(--color-accent);
+      color: white;
+      border-color: var(--color-accent);
+      transform: translateY(-1px);
+    }
+    
+    .chip i {
+      font-size: 0.85em;
+    }
+    
+    /* Experience Cards */
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--spacing-md);
+    }
+    
+    .exp-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: var(--spacing-md);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    .exp-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .exp-card:hover {
+      box-shadow: 0 8px 30px var(--color-shadow);
+      transform: translateY(-4px);
+    }
+    
+    .exp-card.research {
+      border-top: 4px solid #0066cc;
+    }
+    
+    .exp-card.teaching {
+      border-top: 4px solid #ff6b35;
+    }
+    
+    .exp-header {
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .exp-icon {
+      font-size: 1.5rem;
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .exp-card.research .exp-icon {
+      color: #0066cc;
+    }
+    
+    .exp-card.teaching .exp-icon {
+      color: #ff6b35;
+    }
+    
+    .exp-role {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: var(--spacing-xs);
+      line-height: 1.3;
+    }
+    
+    .exp-org {
+      font-size: 1rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    .exp-date {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .exp-description {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--spacing-sm);
+      line-height: 1.6;
+    }
+    
+    .exp-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .exp-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: var(--spacing-xs);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    
+    .exp-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+    
+    .exp-list a {
+      color: var(--color-accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+    
+    .exp-list a:hover {
+      border-bottom-color: var(--color-accent);
+    }
+    
+    /* Footer */
+    .footer {
+      padding: var(--spacing-xl) var(--spacing-md) var(--spacing-md);
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: 0.85rem;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* Scroll Progress Bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--color-accent);
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.1s ease-out;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav {
+        position: static;
+        justify-content: center;
+        padding: var(--spacing-md) 0;
+        background: var(--color-surface);
+        border-bottom: 1px solid var(--color-border);
+      }
+      
+      .profile-image {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .hero {
+        padding-top: var(--spacing-md);
+      }
+      
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .exp-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Staggered Animation Delays */
+    .pub-item:nth-child(1) { transition-delay: 0.1s; }
+    .pub-item:nth-child(2) { transition-delay: 0.2s; }
+    .pub-item:nth-child(3) { transition-delay: 0.3s; }
+    .pub-item:nth-child(4) { transition-delay: 0.4s; }
+    
+    .exp-card:nth-child(1) { transition-delay: 0.1s; }
+    .exp-card:nth-child(2) { transition-delay: 0.2s; }
+  </style>
 </head>
 
-<body id="page-top">
+<body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+  
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="#about">About</a>
+    <a href="#publications">Publications</a>
+    <a href="#experience">Experience</a>
+  </nav>
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-		<a class="navbar-brand js-scroll-trigger" href="#page-top">
-			<span class="d-block d-lg-none  mx-0 px-0">
-				<!-- <img src="img/logo-white.png" alt="" class="img-fluid"> -->
-				Mohammad Sonji
-			</span>
-			<span class="d-none d-lg-block">
-				<img class="img-fluid img-profile  mx-auto mb-2" src="img/profile.jpeg" alt="">
-			</span>
-		</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#about">About</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#experience">Experience</a>
-				</li>
-				<!-- <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#research">Research</a>
-        </li> -->
-        <li class="nav-item">
-          <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=jc8-iB2sIoD14o52uC3DYa7c3linRl2WvCR8Fto-J3M"></script>
-        </li>
-			</ul>
-		</div>
-	</nav>
+  <!-- Hero Section -->
+  <section class="hero" id="about">
+    <img src="profile.jpeg" alt="Mohammad Sonji" class="profile-image">
+    <div class="hero-title">Computer Science PhD Candidate</div>
+    <h1 class="hero-name">Mohammad Sonji</h1>
+    
+    <div class="hero-about">
+      <p>
+        I am currently a <em>PhD</em> student in the <a href="https://insight-cal.github.io/team/" target="_blank" rel="noopener noreferrer">Insight Lab</a>
+        at the University of Virginia, advised by <a href="https://adwaitjog.github.io/" target="_blank" rel="noopener noreferrer">Professor Adwait Jog</a>.
+        I hold a <em>Master of Science</em> in <strong>Computer Science</strong> from the American University of Beirut, advised by
+        <a href="https://ielhajj.github.io/" target="_blank" rel="noopener noreferrer">Professor Izzat El Hajj</a>.
+      </p>
+      
+      <p class="hero-interests">
+        Research interests: GPU systems (utilization, multi-tenancy, interconnect/memory behavior), high-performance computing, and performance analysis/modeling.
+      </p>
+    </div>
+    
+    <div class="contact-grid">
+      <div class="contact-item">
+        <i class="fa fa-university"></i>
+        <span>University of Virginia</span>
+      </div>
+      
+      <div class="contact-item">
+        <i class="fa fa-map-marker"></i>
+        <span>Charlottesville, VA 22903</span>
+      </div>
+      
+      <a href="mailto:npv2tk@virginia.edu" class="contact-item">
+        <i class="fa fa-envelope"></i>
+        <span>npv2tk@virginia.edu</span>
+      </a>
+      
+      <a href="https://scholar.google.com/citations?hl=en&user=a3n1qFoAAAAJ" target="_blank" rel="noopener noreferrer" class="contact-item">
+        <i class="fa-brands fa-google-scholar"></i>
+        <span>Google Scholar</span>
+      </a>
+      
+      <a href="MohammadSonji_CV.pdf" target="_blank" rel="noopener noreferrer" class="contact-item">
+        <i class="fa fa-file-pdf-o"></i>
+        <span>Curriculum Vitae</span>
+      </a>
+      
+      <a href="https://www.linkedin.com/in/mohammad-sonji" target="_blank" rel="noopener noreferrer" class="contact-item">
+        <i class="fa fa-linkedin"></i>
+        <span>LinkedIn</span>
+      </a>
+      
+      <a href="https://github.com/msonji" target="_blank" rel="noopener noreferrer" class="contact-item">
+        <i class="fa fa-github"></i>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </section>
 
-	<div class="container-fluid p-0">
+  <!-- Publications Section -->
+  <section class="section" id="publications">
+    <div class="section-header">
+      <div class="section-number">01</div>
+      <h2 class="section-title">Publications</h2>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="pub-grid">
+      <article class="pub-item">
+        <div class="pub-title">
+          <a href="https://www.computer.org/csdl/proceedings-article/ispass/2025/029400a108/28VRrEEzfO0" target="_blank" rel="noopener noreferrer">
+            Dissecting Performance Overheads of Confidential Computing on GPU-based Systems
+          </a>
+        </div>
+        <div class="pub-meta">
+          Yang Yang, <b>Mohammad Sonji</b>, Adwait Jog ·
+          <span class="pub-venue">IEEE ISPASS 2025</span>
+        </div>
+        <div class="pub-chips">
+          <a class="chip" href="https://adwaitjog.github.io/docs/pdf/dissectcc-ispass25.pdf" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-file-pdf-o"></i>PDF
+          </a>
+          <a class="chip" href="https://doi.org/10.1109/ISPASS64960.2025.00020" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-link"></i>DOI
+          </a>
+          <a class="chip" href="https://github.com/insight-cal-uva/hcc-ispass25-artifact" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-github"></i>Artifact
+          </a>
+        </div>
+      </article>
+      
+      <article class="pub-item">
+        <div class="pub-title">
+          <a href="https://scholar.google.com/scholar?q=Are%20We%20There%20Yet%3F%20Predicting%20if%20Executing%20Applications%20are%20Near%20Completion" target="_blank" rel="noopener noreferrer">
+            Are We There Yet? Predicting if Executing Applications are Near Completion
+          </a>
+        </div>
+        <div class="pub-meta">
+          <b>M. Sonji</b>, M. Baydoun, S. Diab, A. Nassereldine, P. Bruel, A. Dhakal, R. Enriquez, G. Rattihalli,
+          D. Tootaghaj, G. Renaud, B. Chapman, F. Salem, E. Frachtenberg, D. Milojicic, I. Hajj ·
+          <span class="pub-venue">ACM/SPEC ICPE 2026</span>
+        </div>
+        <div class="pub-chips">
+          <a class="chip" href="" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-graduation-cap"></i>Scholar
+          </a>
+        </div>
+      </article>
+      
+      <article class="pub-item">
+        <div class="pub-title">
+          <a href="https://doi.org/10.1109/IPDPSW66978.2025.00044" target="_blank" rel="noopener noreferrer">
+            Predicting Performance Variability
+          </a>
+        </div>
+        <div class="pub-meta">
+          M. Baydoun, <b>M. Sonji</b>, P. Bruel, D. Milojicic, E. Frachtenberg, I. El Hajj ·
+          <span class="pub-venue">IPDPSW (iWAPT) 2025</span>
+        </div>
+        <div class="pub-chips">
+          <a class="chip" href="https://doi.org/10.1109/IPDPSW66978.2025.00044" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-link"></i>DOI
+          </a>
+        </div>
+      </article>
+      
+      <article class="pub-item">
+        <div class="pub-title">
+          <a href="https://doi.org/10.1109/IPDPSW66978.2025.00124" target="_blank" rel="noopener noreferrer">
+            Serverless Graph Analytics on Multi-Instance GPU
+          </a>
+        </div>
+        <div class="pub-meta">
+          <b>M. Sonji</b>, M. Baydoun, A. Dhakal, G. Rattihalli, D. Milojicic, I. El Hajj ·
+          <span class="pub-venue">IPDPSW (GrAPL) 2025</span>
+        </div>
+        <div class="pub-chips">
+          <a class="chip" href="https://doi.org/10.1109/IPDPSW66978.2025.00124" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-link"></i>DOI
+          </a>
+        </div>
+      </article>
+      
+      <!-- <div class="pub-item" style="background: transparent; border: none; box-shadow: none; padding-left: 0;">
+        <p style="color: var(--color-text-muted); font-style: italic;">
+          Full publication list available in <a href="img/MohammadSonji_CV.pdf" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent); text-decoration: none; border-bottom: 1px solid var(--color-accent);">CV</a>
+        </p>
+      </div> -->
+    </div>
+  </section>
 
-		<!--====================================================
-                        ABOUT
-    ======================================================-->
-
-		<section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
-			<div class="my-auto">
-				<h2 class="mb-0">Mohammad
-					<span class="text-primary">Sonji</span>
-				</h2>
-				<div class="subheading mb-5"><b>COMPUTER SCIENCE PHD CANDIDATE</b></div>
-        <p class="mb-5" style="max-width: 600px; color: black; ">I am currently a <em>PhD</em> student in the <a href="https://insight-cal.github.io/team/">Insight Lab</a> at the University of Virginia, advised by <a href="https://adwaitjog.github.io/">Professor Adwait Jog</a>. I hold a <em>Master of Science</em> degree in <b>Computer Science</b> from the American University of Beirut, where I was advised by <a href="https://ielhajj.github.io/">Professor Izzat El Hajj</a>. I am broadly interested in Systems, especially: High-Performance Computing and Architecture. 
+  <!-- Experience Section -->
+  <section class="section" id="experience">
+    <div class="section-header">
+      <div class="section-number">02</div>
+      <h2 class="section-title">Experience</h2>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="exp-grid">
+      <article class="exp-card research">
+        <div class="exp-header">
+          <div class="exp-icon">
+            <i class="fa fa-laptop"></i>
+          </div>
+          <h3 class="exp-role">Research Assistant</h3>
+          <div class="exp-org">American University of Beirut & Hewlett Packard Labs</div>
+          <div class="exp-date">Jun 2022 – Jul 2024</div>
+        </div>
+        
+        <p class="exp-description">
+          Worked on performance variability and performance modeling, and systems for heterogeneous/serverless computing.
         </p>
         
-				<ul class="list-inline list-social-icons">
-          <li class="">
-              <span class="fa-stack">
-                <i class="fa fa-home fa-stack-1x"></i>
-              </span>
-							Department of Computer Science, University of Virginia
-					</li>
-					<li class="">
-							<span class="fa-stack">
-								<i class="fa fa-map-marker fa-stack-1x"></i>
-							</span>
-							85 Engineer's Way, Charlottesville, VA 22903
-					</li>
-          <li class="">
-						<a href="mailto:npv2tk@virginia.edu">
-							<span class="fa-stack">
-								<!-- <i class="fa fa-circle fa-stack-2x"></i> -->
-								<i class="fa fa-envelope-o fa-stack-1x"></i>
-								<!-- <i class="fa-regular fa-envelope"></i> -->
-							</span>
-							npv2tk at virginia dot edu
-						</a>
-					</li>
-          <li class="">
-						<a href="https://scholar.google.com/citations?hl=en&user=a3n1qFoAAAAJ">
-							<span class="fa-stack">
-								<!-- <i class="fa fa-circle fa-stack-1x"></i> -->
-								<!-- <i class="fa fa-scholar fa-stack-1x"></i> -->
-                 <i class="fa-brands fa-google-scholar fa-stack-1x"></i>
-								<!-- <i class="fa-brands fa-linkedin-in"></i> -->
-							</span>
-							Google Scholar
-						</a>
-					</li>
-					<li class="">
-						<a href="/img/MohammadSonji_CV.pdf">
-							<span class="fa-stack">
-								<!-- <i class="fa fa-circle fa-stack-2x"></i> -->
-								<i class="fa fa-file-o fa-stack-1x"></i>
-								<!-- <i class="fa-regular fa-file-lines"></i> -->
-							</span>
-							CV
-						</a>
-					</li>
-					<li class="">
-						<a href="https://www.linkedin.com/in/mohammad-sonji">
-							<span class="fa-stack">
-								<!-- <i class="fa fa-circle fa-stack-1x"></i> -->
-								<i class="fa fa-linkedin fa-stack-1x"></i>
-								<!-- <i class="fa-brands fa-linkedin-in"></i> -->
-							</span>
-							LinkedIn
-						</a>
-					</li>
-					<li class="">
-						<!-- <a href="https://github.com/msonji"> -->
-              <a href="https://github.com/msonji" target="_blank" rel="noopener noreferrer">
-							<span class="fa-stack">
-								<!-- <i class="fa fa-circle fa-stack-2x"></i> -->
-								<i class="fa fa-github fa-stack-1x"></i>
-								<!-- <i class="fa-brands fa-github"></i> -->
-							</span>
-							Github
-						</a>
-					</li>
-				</ul>
-			</div>
-		</section>
-
-		<!--====================================================
-                        EXPERIENCE
-    ======================================================-->
-		<section class="resume-section p-3 p-lg-3" id="experience">
-			<div class="row my-auto">
-				<div class="col-12">
-					<h2 class="text-center">Experience</h2>
-					<div class="mb-5 heading-border"></div>
-				</div>
-
-        <!-- <div class="resume-item col-md-6 col-sm-12">
-					<div class="card mx-0 p-4 mb-5"
-						style="border-color: #ffc107; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.21);">
-						<div class="resume-content mr-auto">
-							<h4 class="mb-3"><i class="fas fa-chalkboard-teacher mr-3 text-warning"></i> Teaching
-								Assistant</h4>
-							<h5> University of Virginia, UVA.</h5>
-							<p>
-							<ul>
-								<li>Fall 25 : <a href="https://adwaitjog.github.io/teach/uva_4444_f25.html">CS 4444: Introduction to Parallel Computing</a></li>
-							</ul>
-							</p>
-						</div>
-						<div class="resume-date text-md-right">
-							<span class="text-primary">Jan 2022 - Dec 2023</span>
-						</div>
-					</div>
-				</div> -->
-
-
-				<div class="resume-item col-md-6 col-sm-12 ">
-					<div class="card mx-0 p-4 mb-5"
-						style="border-color: #17a2b8; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.21);">
-						<div class=" resume-content mr-auto">
-							<h4 class="mb-3"><i class="fa fa-laptop mr-3 text-info"></i> Research Assistant</h4>
-							<h5> American University of Beirut, AUB & Hewlett Packard Labs, HPE.</h5>
-							<p>
-                I joined Dr. Izzat El Hajj's team in collaboration with Hewlett Packard Labs (HPE) led by Dr. Dejan Milojicic and his team and have been working on multiple research projects related to:
-                <ul>
-                  <li>Heterogeneous Serverless Graph Computing</li>
-                  <li>Applications' Performance Variability and Performance Modeling</li>
-                  <li>Applications' Performance, Power, and Execution Prediction</li>
-                </ul>
-							</p>
-						</div>
-						<div class="resume-date text-md-right">
-							<span class="text-primary">June 2022 - July 2024</span>
-						</div>
-					</div>
-				</div>
-				<div class="resume-item col-md-6 col-sm-12">
-					<div class="card mx-0 p-4 mb-5"
-						style="border-color: #ffc107; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.21);">
-						<div class="resume-content mr-auto">
-							<h4 class="mb-3"><i class="fas fa-chalkboard-teacher mr-3 text-warning"></i> Teaching Assistant</h4>
-
-              <h5> University of Virginia, UVA.</h5>
-							<p>
-							<ul>
-								<li>Fall 25 : <a href="https://adwaitjog.github.io/teach/uva_4444_f25.html">CS 4444: Introduction to Parallel Computing</a></li>
-							</ul>
-
-							<h5> American University of Beirut, AUB.</h5>
-							<p>
-							<ul>
-								<li>Fall 23-24 : CMPS221 Computer Organization & Design</li>
-								<li>Spring 22-23 : CMPS202 Intermediate Programming with Data Structures</li>
-								<li>Fall 22-23 : CMPS224/CMPS396AA GPU Computing</li>
-								<li>Spring 21-22 :
-									<ul>
-										<li>CMPS200 Introduction to Programming</li>
-										<li>CMPS212 Intermediate Programming with Data Structures</li>
-									</ul>
-								</li>
-							</ul>
-							</p>
-						</div>
-						<!-- <div class="resume-date text-md-right">
-							<span class="text-primary">Jan 2022 - Dec 2023</span>
-						</div> -->
-					</div>
-				</div>
-
-		</section>
-
-		<!--====================================================
-                        RESEARCH
-    ======================================================-->
-		<div style="display:none">
-    <section class="resume-section p-3 p-lg-3" id="research">
-			<div class="row my-auto">
-				<div class="col-12">
-					<h2 class="text-center">Research Projects</h2>
-					<div class="mb-5 heading-border">
+        <ul class="exp-list">
+          <li>Heterogeneous serverless graph computing</li>
+          <li>Applications' performance variability and modeling</li>
+          <li>Execution/power/performance prediction</li>
+        </ul>
+      </article>
+      
+      <article class="exp-card teaching">
+        <div class="exp-header">
+          <div class="exp-icon">
+            <i class="fas fa-chalkboard-teacher"></i>
           </div>
-				</div>
-				<div class="resume-item col-md-6 col-sm-12 ">
-					<div class="card mx-0 p-4 mb-5"
-						style="border-color: #17a2b8; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.21);">
-						<div class=" resume-content mr-auto">
-							<!-- <h4 class="mb-3"><i class="fa fa-file-lines mr-3 text-info"></i> Submissions</h4> -->
-							<!-- <h5> American University of Beirut, AUB & Hewlett Packard Labs, HPE.</h5> -->
-							<!-- <p>I have submitted two papers as the first author, currently pending review. -->
-							<!-- </p> -->
-						</div>
-						<!-- <div class="resume-date text-md-right">
-							<span class="text-primary">June 2022 - Present</span>
-						</div> -->
-					</div>
-				</div>
-				<!-- <div class="resume-item col-md-6 col-sm-12">
-					<div class="card mx-0 p-4 mb-5"
-						style="border-color: #ffc107; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.21);">
-						<div class="resume-content mr-auto">
-							<h4 class="mb-3"><i class="fas fa-chalkboard-teacher mr-3 text-warning"></i> Teaching
-								Assistant</h4>
-							<h5> American University of Beirut, AUB.</h5>
-							<p>
-							<ul>
-								<li>Fall 23-24 : CMPS221 Computer Organization & Design</li>
-								<li>Spring 22-23 : CMPS202 Intermediate Programming with Data Structures</li>
-								<li>Fall 22-23 : CMPS224/CMPS396AA GPU Computing</li>
-								<li>Spring 21-22 :
-									<ul>
-										<li>CMPS200 Introduction to Programming</li>
-										<li>CMPS212 Intermediate Programming with Data Structures</li>
-									</ul>
-								</li>
-							</ul>
-							</p>
-						</div>
-						<div class="resume-date text-md-right">
-							<span class="text-primary">Jan 2022 - Dec 2023</span>
-						</div>
-					</div>
-				</div> -->
-				<!-- <div class="resume-item col-md-6 col-sm-12">
-                <div class="card mx-0 p-4 mb-5" style="border-color: #28a745; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.21);">
-                  <div class="resume-content mr-auto">
-                      <h4 class="mb-3"><i class="fa fa-camera mr-3 text-success"></i> Junior Web Designer</h4>
-                      <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
-                  </div>
-                  <div class="resume-date text-md-right">
-                      <span class="text-primary">July 2017 - December 2018</span>
-                  </div>
-                </div>  
-              </div>
-              <div class="resume-item col-md-6 col-sm-12">
-                <div class="card mx-0 p-4 mb-5" style="border-color: #2196f3; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.21);">
-                  <div class="resume-content mr-auto">
-                      <h4 class="mb-3"><i class="fa fa-area-chart mr-3 text-primary"></i> Web Design Intern</h4>
-                      <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
-                  </div>
-                  <div class="resume-date text-md-right">
-                      <span class="text-primary">September 2018 - June 2019</span>
-                  </div>
-                </div>  
-              </div>
-          </div> -->
+          <h3 class="exp-role">Teaching Assistant</h3>
+          <div class="exp-org">University of Virginia</div>
+          <div class="exp-date">2025 – Present</div>
+        </div>
+        
+        <ul class="exp-list">
+          <li>Spring 2026: <a href="https://adwaitjog.github.io/teach/uva_6501_s26.html" target="_blank" rel="noopener noreferrer">CS 6501: GPU Architectures</a></li>
+          <li>Fall 2025: <a href="https://adwaitjog.github.io/teach/uva_4444_f25.html" target="_blank" rel="noopener noreferrer">CS 4444: Introduction to Parallel Computing</a></li>
+        </ul>
+        
+        <div style="margin-top: var(--spacing-md); padding-top: var(--spacing-md); border-top: 1px solid var(--color-border);">
+          <div class="exp-org" style="margin-bottom: var(--spacing-sm);">American University of Beirut</div>
+          <ul class="exp-list">
+            <li>Fall 2023–2024: CMPS221 Computer Organization & Design</li>
+            <li>Spring 2022–2023: CMPS202 Intermediate Programming with Data Structures</li>
+            <li>Fall 2022–2023: CMPS224/CMPS396AA GPU Computing (CUDA)</li>
+            <li>Spring 2021–2022: CMPS200 Intro to Programming; CMPS212 Data Structures</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>© Mohammad Sonji</p>
+      <div style="margin-top: var(--spacing-md);">
+        <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=jc8-iB2sIoD14o52uC3DYa7c3linRl2WvCR8Fto-J3M"></script>
       </div>
-		</section>
-  </div>
-  
-	<!-- Global javascript -->
-	<script src="js/jquery/jquery.min.js"></script>
-	<script src="js/bootstrap/bootstrap.bundle.min.js"></script>
-	<script src="js/jquery-easing/jquery.easing.min.js"></script>
-	<script src="js/counter/jquery.waypoints.min.js"></script>
-	<script src="js/counter/jquery.counterup.min.js"></script>
-	<script src="js/custom.js"></script>
-	<script>
-		$(document).ready(function () {
+    </div>
+  </footer>
 
-			$(".filter-b").click(function () {
-				var value = $(this).attr('data-filter');
-				if (value == "all") {
-					$('.filter').show('1000');
-				}
-				else {
-					$(".filter").not('.' + value).hide('3000');
-					$('.filter').filter('.' + value).show('3000');
-				}
-			});
-
-			if ($(".filter-b").removeClass("active")) {
-				$(this).removeClass("active");
-			}
-			$(this).addClass("active");
-		});
-
-		// SKILLS
-		$(function () {
-			$('.counter').counterUp({
-				delay: 10,
-				time: 2000
-			});
-
-		});
-	</script>
-
+  <script>
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scrollProgress').style.width = scrolled + '%';
+    });
+    
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all animated elements
+    document.querySelectorAll('.section-header, .pub-item, .exp-card').forEach(el => {
+      observer.observe(el);
+    });
+    
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
 </body>
-
 </html>
