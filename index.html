@@ -5,11 +5,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description"
-        content="Mohammad Sonji — Computer Science PhD Candidate (UVA). GPU systems, interconnect/memory, HPC.">
+        content="Mohammad Sonji is a Computer Science PhD candidate at UVA researching GPU systems, memory and interconnects, high-performance computing, and performance modeling.">
     <meta name="author" content="Mohammad Sonji">
+    <meta name="theme-color" content="#f7f4ee">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mohammad Sonji — Computer Systems Researcher">
+    <meta property="og:description"
+        content="Research in GPU systems, memory and interconnects, high-performance computing, and performance modeling.">
+    <meta property="og:url" content="https://msonji.github.io/">
+    <meta property="og:image" content="https://msonji.github.io/profile.jpeg">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://msonji.github.io/">
 
     <link rel="shortcut icon" href="profile.jpeg">
-    <title>Mohammad Sonji</title>
+    <title>Mohammad Sonji — Computer Systems Researcher</title>
 
     <!-- Distinctive Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,18 +28,22 @@
         rel="stylesheet">
 
     <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/248028fadd.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/248028fadd.js" crossorigin="anonymous" defer></script>
+    <script>document.documentElement.classList.add('js');</script>
 
     <style>
         :root {
-            --color-bg: #fafaf8;
-            --color-text: #1a1a1a;
-            --color-text-muted: #666666;
-            --color-accent: #0066cc;
-            --color-accent-hover: #0052a3;
-            --color-border: #e0e0e0;
-            --color-surface: #ffffff;
-            --color-shadow: rgba(0, 0, 0, 0.06);
+            --color-bg: #f7f4ee;
+            --color-text: #182035;
+            --color-text-muted: #626775;
+            --color-accent: #e57200;
+            --color-accent-hover: #c65f00;
+            --color-accent-text: #994200;
+            --color-accent-soft: #f9dcbf;
+            --color-navy: #232d4b;
+            --color-border: #ded9cf;
+            --color-surface: #fffdf9;
+            --color-shadow: rgba(35, 45, 75, 0.1);
 
             --font-serif: 'Libre Baskerville', Georgia, serif;
             --font-sans: 'DM Sans', -apple-system, sans-serif;
@@ -44,14 +57,17 @@
         }
 
         [data-theme="dark"] {
-            --color-bg: #121212;
-            --color-text: #f0f0f0;
-            --color-text-muted: #a0a0a0;
-            --color-border: #333333;
-            --color-surface: #1e1e1e;
-            --color-shadow: rgba(0, 0, 0, 0.4);
-            --color-accent: #4da6ff;
-            --color-accent-hover: #80c1ff;
+            --color-bg: #111622;
+            --color-text: #f5f1e8;
+            --color-text-muted: #adb3c0;
+            --color-border: #343c50;
+            --color-surface: #1a2131;
+            --color-shadow: rgba(0, 0, 0, 0.35);
+            --color-accent: #e57200;
+            --color-accent-hover: #f9dcbf;
+            --color-accent-text: #ffb477;
+            --color-accent-soft: #402b24;
+            --color-navy: #d9e3ff;
         }
 
         * {
@@ -63,11 +79,14 @@
         html {
             scroll-behavior: smooth;
             font-size: 16px;
+            scroll-padding-top: 5rem;
         }
 
         body {
             font-family: var(--font-sans);
-            background: var(--color-bg);
+            background:
+                radial-gradient(circle at 86% 8%, color-mix(in srgb, var(--color-accent) 8%, transparent), transparent 25rem),
+                var(--color-bg);
             color: var(--color-text);
             line-height: 1.55;
             -webkit-font-smoothing: antialiased;
@@ -75,65 +94,124 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
+        ::selection {
+            background: var(--color-accent);
+            color: #111;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 3px;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 0.75rem;
+            left: 0.75rem;
+            z-index: 10000;
+            padding: 0.6rem 0.9rem;
+            border-radius: 6px;
+            background: var(--color-text);
+            color: var(--color-bg);
+            text-decoration: none;
+            transform: translateY(-160%);
+            transition: transform 0.2s ease;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
         /* Header & Hero */
         .hero {
-            min-height: 74vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: calc(var(--spacing-xl) + 1.5rem) var(--spacing-md) var(--spacing-xl);
-            max-width: 1080px;
+            min-height: 72vh;
+            display: grid;
+            align-items: center;
+            padding: 6.25rem var(--spacing-md) 2.75rem;
+            max-width: 1120px;
             margin: 0 auto;
             position: relative;
-            opacity: 0;
+            opacity: 1;
             animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(260px, 0.52fr);
+            align-items: center;
+            gap: clamp(2rem, 5vw, 4.25rem);
         }
 
         .hero-title {
             font-family: var(--font-mono);
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0;
-            color: var(--color-accent);
-            margin-bottom: var(--spacing-xs);
-            opacity: 0;
+            letter-spacing: 0.09em;
+            color: var(--color-accent-text);
+            margin-bottom: 0.75rem;
+            opacity: 1;
             animation: fadeInUp 1s ease-out 0.3s forwards;
-        }
-
-        .hero-name-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: var(--spacing-md);
-            flex-wrap: wrap;
-            margin-bottom: var(--spacing-sm);
         }
 
         .hero-name {
             font-family: var(--font-serif);
-            font-size: 4.5rem;
+            font-size: clamp(3.1rem, 6.5vw, 5.25rem);
             font-weight: 700;
-            line-height: 1.1;
-            letter-spacing: 0;
-            margin: 0;
-            opacity: 0;
+            line-height: 0.98;
+            letter-spacing: -0.045em;
+            margin: 0 0 0.85rem;
+            opacity: 1;
             animation: fadeInUp 1s ease-out 0.2s forwards;
         }
 
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--color-surface);
-            box-shadow: 0 4px 16px var(--color-shadow);
-            margin: 0;
+        .hero-name span {
+            display: block;
+            color: var(--color-accent);
+        }
+
+        .hero-photo {
             position: relative;
-            top: 16px;
-            opacity: 0;
+            justify-self: end;
+            width: min(100%, 305px);
+        }
+
+        .hero-photo::before {
+            content: none;
+        }
+
+        .profile-image {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            height: auto;
+            border-radius: 14px;
+            object-fit: cover;
+            object-position: center 28%;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 12px 30px var(--color-shadow);
+            margin: 0;
+            opacity: 1;
             animation: fadeInUp 1s ease-out 0.1s forwards;
-            flex: 0 0 auto;
+        }
+
+        .photo-note {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin-top: 0.8rem;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--color-text-muted);
+        }
+
+        .photo-note::before {
+            content: '';
+            width: 0.55rem;
+            height: 0.55rem;
+            border-radius: 50%;
+            background: #2e9d63;
+            box-shadow: 0 0 0 4px color-mix(in srgb, #2e9d63 18%, transparent);
         }
 
         @keyframes fadeInUp {
@@ -148,19 +226,19 @@
         }
 
         .hero-about {
-            max-width: 720px;
+            max-width: 690px;
             font-size: 1rem;
-            line-height: 1.65;
-            opacity: 0;
+            line-height: 1.58;
+            opacity: 1;
             animation: fadeInUp 1s ease-out 0.5s forwards;
         }
 
         .hero-about p {
-            margin-bottom: var(--spacing-sm);
+            margin-bottom: 0.55rem;
         }
 
         .hero-about a {
-            color: var(--color-accent);
+            color: var(--color-accent-text);
             text-decoration: none;
             border-bottom: 1px solid transparent;
             transition: border-color 0.2s ease;
@@ -170,69 +248,101 @@
             border-bottom-color: var(--color-accent);
         }
 
-        .hero-interests {
-            font-size: 0.95rem;
-            color: var(--color-text-muted);
-            font-style: italic;
-        }
-
-        /* Contact Grid */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: var(--spacing-sm);
-            max-width: 900px;
-            margin-top: var(--spacing-sm);
-            opacity: 0;
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.65rem;
+            margin-top: 0.9rem;
+            opacity: 1;
             animation: fadeInUp 1s ease-out 0.7s forwards;
         }
 
-        .contact-item {
-            display: flex;
+        .button {
+            display: inline-flex;
             align-items: center;
-            gap: var(--spacing-xs);
-            padding: 0.55rem var(--spacing-sm);
+            justify-content: center;
+            gap: 0.45rem;
+            min-height: 42px;
+            padding: 0.62rem 0.9rem;
             background: var(--color-surface);
             border: 1px solid var(--color-border);
             border-radius: 6px;
-            font-size: 0.875rem;
-            transition: all 0.3s ease;
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            font-weight: 600;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
             text-decoration: none;
             color: var(--color-text);
         }
 
-        .contact-item:hover {
+        .button:hover {
             border-color: var(--color-accent);
             transform: translateY(-2px);
-            box-shadow: 0 5px 12px var(--color-shadow);
         }
 
-        .contact-item i {
-            color: var(--color-accent);
-            width: 20px;
-            text-align: center;
+        .button.primary {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            color: #111;
+        }
+
+        .button.primary:hover {
+            background: var(--color-accent-hover);
+            border-color: var(--color-accent-hover);
+            color: #111;
+        }
+
+        .hero-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem 1rem;
+            margin-top: 0.85rem;
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+        }
+
+        .hero-links a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+        }
+
+        .hero-links a:hover {
+            color: var(--color-accent-text);
         }
 
         /* Navigation */
         .nav {
             position: fixed;
             top: 0;
-            right: 0;
-            padding: var(--spacing-sm) var(--spacing-md);
+            left: 0;
+            padding: 0.5rem max(var(--spacing-md), calc((100vw - 1120px) / 2));
             z-index: 1000;
             display: flex;
             align-items: center;
-            gap: var(--spacing-sm);
-            background: linear-gradient(to bottom, var(--color-bg) 50%, transparent);
+            gap: 0.2rem;
+            background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+            border-bottom: 1px solid color-mix(in srgb, var(--color-border) 72%, transparent);
+            backdrop-filter: blur(16px);
             width: 100%;
             justify-content: flex-end;
+        }
+
+        .nav-brand {
+            margin-right: auto;
+            font-family: var(--font-serif);
+            font-weight: 700;
+            color: var(--color-text) !important;
+            text-transform: none !important;
+            letter-spacing: -0.02em !important;
+            font-size: 1rem !important;
         }
 
         .nav a {
             font-family: var(--font-mono);
             font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0;
+            letter-spacing: 0.04em;
             color: var(--color-text-muted);
             text-decoration: none;
             transition: color 0.2s ease;
@@ -240,8 +350,9 @@
             border-bottom: 2px solid transparent;
         }
 
-        .nav a:hover {
-            color: var(--color-accent);
+        .nav a:hover,
+        .nav a.active {
+            color: var(--color-accent-text);
             border-bottom-color: var(--color-accent);
         }
 
@@ -260,43 +371,60 @@
         }
 
         .theme-toggle:hover {
-            color: var(--color-accent);
+            color: var(--color-accent-text);
         }
 
         /* Section Styling */
         .section {
-            padding: var(--spacing-lg) var(--spacing-md);
-            max-width: 1080px;
+            padding: 3rem var(--spacing-md);
+            max-width: 1120px;
             margin: 0 auto;
         }
 
         .section-header {
-            margin-bottom: var(--spacing-md);
-            opacity: 0;
-            transform: translateY(20px);
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(260px, 0.7fr);
+            align-items: end;
+            gap: 1.3rem;
+            margin-bottom: 1.5rem;
             transition: all 0.6s ease-out;
         }
 
-        .section-header.visible {
+        .js .section-header {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .js .section-header.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .section-heading-group {
+            min-width: 0;
         }
 
         .section-number {
             font-family: var(--font-mono);
             font-size: 0.75rem;
             font-weight: 600;
-            color: var(--color-accent);
+            color: var(--color-accent-text);
             letter-spacing: 0;
             margin-bottom: var(--spacing-xs);
         }
 
         .section-title {
             font-family: var(--font-serif);
-            font-size: 3rem;
+            font-size: clamp(2.1rem, 4.5vw, 3.2rem);
             font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: 0;
+            line-height: 1.05;
+            letter-spacing: -0.035em;
+        }
+
+        .section-intro {
+            max-width: 540px;
+            color: var(--color-text-muted);
+            font-size: 0.93rem;
         }
 
         .section-divider {
@@ -305,6 +433,63 @@
             background: var(--color-accent);
             margin-top: var(--spacing-sm);
             border-radius: 2px;
+        }
+
+        /* Research focus */
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.8rem;
+        }
+
+        .focus-card {
+            position: relative;
+            min-height: 190px;
+            overflow: hidden;
+            padding: 1.15rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .focus-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--color-accent);
+            box-shadow: 0 14px 32px var(--color-shadow);
+        }
+
+        .focus-number {
+            display: block;
+            margin-bottom: 1.7rem;
+            font-family: var(--font-mono);
+            color: var(--color-accent-text);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .focus-card h3 {
+            margin-bottom: 0.4rem;
+            font-family: var(--font-serif);
+            font-size: 1.28rem;
+            line-height: 1.25;
+        }
+
+        .focus-card p {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            line-height: 1.55;
+        }
+
+        .focus-card::after {
+            content: '';
+            position: absolute;
+            width: 7rem;
+            height: 7rem;
+            right: -3.5rem;
+            top: -3.5rem;
+            border-radius: 50%;
+            background: var(--color-accent-soft);
         }
 
         /* Timeline (News) */
@@ -317,20 +502,28 @@
 
         .timeline-item {
             position: relative;
-            margin-bottom: var(--spacing-md);
+            margin-bottom: 0.8rem;
             padding-left: var(--spacing-sm);
+            transition: all 0.6s ease-out;
+        }
+
+        .js .timeline-item {
             opacity: 0;
             transform: translateX(-20px);
-            transition: all 0.6s ease-out;
         }
 
         .timeline-item:last-child {
             margin-bottom: 0;
         }
 
-        .timeline-item.visible {
+        .js .timeline-item.visible {
             opacity: 1;
             transform: translateX(0);
+        }
+
+        .timeline-content a {
+            color: var(--color-accent-text);
+            text-underline-offset: 0.2em;
         }
 
         .timeline-item::before {
@@ -356,7 +549,7 @@
         .timeline-date {
             font-family: var(--font-mono);
             font-size: 0.85rem;
-            color: var(--color-accent);
+            color: var(--color-accent-text);
             margin-bottom: var(--spacing-xs);
             font-weight: 600;
             letter-spacing: 0;
@@ -368,7 +561,7 @@
             color: var(--color-text);
             line-height: 1.5;
             background: var(--color-surface);
-            padding: var(--spacing-sm) var(--spacing-md);
+            padding: 0.55rem 0.85rem;
             border-radius: 6px;
             border: 1px solid var(--color-border);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -387,33 +580,62 @@
         /* Publications */
         .pub-grid {
             display: grid;
-            gap: var(--spacing-md);
+            gap: 0.75rem;
         }
 
         .pub-item {
-            padding: var(--spacing-sm) var(--spacing-md);
+            display: grid;
+            grid-template-columns: 112px minmax(0, 1fr);
+            gap: 0.95rem;
+            padding: 1.05rem;
             background: var(--color-surface);
-            border-left: 4px solid var(--color-border);
-            border-radius: 0 6px 6px 0;
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.2s ease;
+        }
+
+        .js .pub-item {
             opacity: 0;
             transform: translateY(20px);
         }
 
-        .pub-item.visible {
+        .js .pub-item.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
         .pub-item:hover {
-            border-left-color: var(--color-accent);
-            box-shadow: 0 6px 16px var(--color-shadow);
-            transform: translateX(4px);
+            border-color: var(--color-accent);
+            box-shadow: 0 10px 26px var(--color-shadow);
+            transform: translateY(-2px);
+        }
+
+        .pub-side {
+            padding-right: 0.95rem;
+            border-right: 1px solid var(--color-border);
+        }
+
+        .pub-year {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-family: var(--font-mono);
+            color: var(--color-accent-text);
+            font-size: 0.76rem;
+            font-weight: 600;
+        }
+
+        .pub-type {
+            display: block;
+            color: var(--color-text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            line-height: 1.45;
+            text-transform: uppercase;
         }
 
         .pub-title {
             font-family: var(--font-serif);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 700;
             line-height: 1.35;
             margin-bottom: var(--spacing-xs);
@@ -426,13 +648,13 @@
         }
 
         .pub-title a:hover {
-            color: var(--color-accent);
+            color: var(--color-accent-text);
         }
 
         .pub-meta {
             font-size: 0.9rem;
             color: var(--color-text-muted);
-            margin-bottom: var(--spacing-sm);
+            margin-bottom: 0.45rem;
             line-height: 1.45;
         }
 
@@ -443,26 +665,28 @@
 
         .pub-venue {
             font-weight: 600;
-            color: var(--color-accent);
+            color: var(--color-accent-text);
         }
 
         .pub-chips {
             display: flex;
-            gap: var(--spacing-xs);
+            gap: 0.45rem;
             flex-wrap: wrap;
-            margin-top: var(--spacing-xs);
+            margin-top: 0.7rem;
         }
 
         .chip {
             display: inline-flex;
             align-items: center;
             gap: var(--spacing-xs);
-            padding: 0.25rem 0.5rem;
-            background: var(--color-bg);
+            min-height: 32px;
+            padding: 0.3rem 0.6rem;
+            background: transparent;
             border: 1px solid var(--color-border);
             border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 500;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 600;
             text-decoration: none;
             color: var(--color-text);
             transition: all 0.2s ease;
@@ -470,7 +694,7 @@
 
         .chip:hover {
             background: var(--color-accent);
-            color: white;
+            color: #111;
             border-color: var(--color-accent);
             transform: translateY(-1px);
             box-shadow: 0 3px 6px var(--color-shadow);
@@ -480,20 +704,23 @@
         .service-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: var(--spacing-md);
+            gap: 0.8rem;
         }
 
         .service-card {
             background: var(--color-surface);
             border: 1px solid var(--color-border);
             border-radius: 8px;
-            padding: var(--spacing-sm) var(--spacing-md);
-            opacity: 0;
-            transform: translateY(20px);
+            padding: 0.75rem 0.95rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.2s ease;
         }
 
-        .service-card.visible {
+        .js .service-card {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .js .service-card.visible {
             opacity: 1;
             transform: translateY(0);
         }
@@ -508,7 +735,7 @@
             font-family: var(--font-mono);
             font-size: 0.78rem;
             font-weight: 600;
-            color: var(--color-accent);
+            color: var(--color-accent-text);
             margin-bottom: var(--spacing-sm);
             text-transform: uppercase;
         }
@@ -582,20 +809,23 @@
         .exp-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-md);
+            gap: 0.8rem;
         }
 
         .exp-card {
             background: var(--color-surface);
             border: 1px solid var(--color-border);
             border-radius: 8px;
-            padding: var(--spacing-sm) var(--spacing-md);
+            padding: 0.75rem 0.95rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.2s ease;
+        }
+
+        .js .exp-card {
             opacity: 0;
             transform: translateY(20px);
         }
 
-        .exp-card.visible {
+        .js .exp-card.visible {
             opacity: 1;
             transform: translateY(0);
         }
@@ -648,7 +878,7 @@
         .exp-date {
             font-family: var(--font-mono);
             font-size: 0.8rem;
-            color: var(--color-accent);
+            color: var(--color-accent-text);
             text-transform: uppercase;
             letter-spacing: 0;
         }
@@ -682,7 +912,7 @@
         }
 
         .exp-list a {
-            color: var(--color-accent);
+            color: var(--color-accent-text);
             text-decoration: none;
             border-bottom: 1px solid transparent;
             transition: border-color 0.2s ease;
@@ -700,10 +930,34 @@
 
         /* Footer */
         .footer {
-            padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
-            text-align: center;
+            max-width: 1120px;
+            margin: 1rem auto 0;
+            padding: 1.4rem var(--spacing-md) 2.2rem;
+            border-top: 1px solid var(--color-border);
             color: var(--color-text-muted);
             font-size: 0.85rem;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--spacing-md);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .footer a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: var(--color-accent-text);
         }
 
         /* Back to Top */
@@ -715,7 +969,7 @@
             height: 40px;
             border-radius: 50%;
             background: var(--color-surface);
-            color: var(--color-accent);
+            color: var(--color-accent-text);
             border: 1px solid var(--color-border);
             display: flex;
             align-items: center;
@@ -739,7 +993,7 @@
 
         .back-to-top:hover {
             background: var(--color-accent);
-            color: white;
+            color: #111;
             border-color: var(--color-accent);
             transform: translateY(-2px);
         }
@@ -756,59 +1010,81 @@
             transition: width 0.1s ease-out;
         }
 
+        @media (max-width: 900px) {
+            .hero-layout {
+                grid-template-columns: minmax(0, 1fr) 240px;
+                gap: 2.5rem;
+            }
+
+            .focus-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .focus-card {
+                min-height: 0;
+            }
+
+            .focus-number {
+                margin-bottom: 1.5rem;
+            }
+        }
+
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 720px) {
             .nav {
-                justify-content: center;
-                flex-wrap: wrap;
-                background: var(--color-surface);
-                border-bottom: 1px solid var(--color-border);
-                padding: var(--spacing-xs) var(--spacing-sm);
-                gap: var(--spacing-xs);
+                padding: 0.45rem 0.7rem;
+                gap: 0.4rem;
+            }
+
+            .nav-brand {
+                display: none;
+            }
+
+            .nav-links {
+                display: flex;
+                flex: 1;
+                gap: 0.15rem;
+                overflow-x: auto;
+                scrollbar-width: none;
+            }
+
+            .nav-links::-webkit-scrollbar {
+                display: none;
             }
 
             .nav a {
-                font-size: 0.7rem;
-                padding: var(--spacing-xs);
+                flex: 0 0 auto;
+                font-size: 0.66rem;
+                padding: 0.4rem 0.45rem;
             }
 
-            .hero-name-row {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: var(--spacing-sm);
-            }
-
-            .profile-image {
-                order: -1;
-                position: relative;
-                top: 0;
-                width: 128px;
-                height: 128px;
-                margin-bottom: 0;
+            .theme-toggle {
+                flex: 0 0 auto;
             }
 
             .hero {
                 min-height: auto;
-                padding-top: calc(var(--spacing-xl) + 4rem);
-                padding-bottom: var(--spacing-lg);
-                text-align: center;
+                padding-top: 5.5rem;
+                padding-bottom: 2.25rem;
+            }
+
+            .hero-layout {
+                grid-template-columns: 1fr;
+                gap: 1.75rem;
+            }
+
+            .hero-photo {
+                grid-row: 1;
+                justify-self: start;
+                width: min(64vw, 240px);
             }
 
             .hero-name {
-                font-size: 2.45rem;
+                font-size: clamp(3rem, 15vw, 4.4rem);
             }
 
-            .hero-about {
-                text-align: left;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .exp-grid {
-                grid-template-columns: 1fr;
+            .hero-cta .button {
+                flex: 1 1 150px;
             }
 
             .timeline {
@@ -820,11 +1096,51 @@
             }
 
             .section {
-                padding: var(--spacing-md);
+                padding: 2.5rem var(--spacing-md);
             }
 
-            .section-title {
-                font-size: 2rem;
+            .section-header {
+                grid-template-columns: 1fr;
+                align-items: start;
+                gap: 0.8rem;
+            }
+
+            .pub-item {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-sm);
+            }
+
+            .pub-side {
+                display: flex;
+                align-items: baseline;
+                gap: 0.65rem;
+                padding: 0 0 0.65rem;
+                border-right: 0;
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            .footer-content {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .back-to-top {
+                width: 36px;
+                height: 36px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
 
@@ -916,120 +1232,142 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
     <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
     <!-- Navigation -->
-    <nav class="nav">
-        <a href="#about">About</a>
-        <a href="#news">News</a>
-        <a href="#publications">Publications</a>
-        <a href="#service">Service</a>
-        <a href="#experience">Experience</a>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+    <nav class="nav" aria-label="Primary navigation">
+        <a class="nav-brand" href="#about" aria-label="Mohammad Sonji, home">MS.</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#research">Research</a>
+            <a href="#news">News</a>
+            <a href="#publications">Publications</a>
+            <a href="#experience">Experience</a>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode"
+            aria-pressed="false" title="Switch color theme">
             <i class="fa fa-moon"></i>
         </button>
     </nav>
 
+    <main id="main-content">
     <!-- Hero Section -->
     <section class="hero" id="about">
-        <div class="hero-title">Computer Science PhD Candidate</div>
+        <div class="hero-layout">
+            <div class="hero-copy">
+                <div class="hero-title">Computer systems researcher · University of Virginia</div>
+                <h1 class="hero-name">Mohammad <span>Sonji.</span></h1>
 
-        <div class="hero-name-row">
-            <h1 class="hero-name">Mohammad Sonji</h1>
-            <img src="profile.jpeg" alt="Mohammad Sonji" class="profile-image">
-        </div>
+                <div class="hero-about">
+                    <p>
+                        I am a Computer Science PhD candidate in UVA's
+                        <a href="https://insight-cal.github.io/team/" target="_blank" rel="noopener noreferrer">Insight
+                            Lab</a>, advised by
+                        <a href="https://adwaitjog.github.io/" target="_blank" rel="noopener noreferrer">Professor
+                            Adwait Jog</a>. I study how modern computing systems use GPUs, memory, and interconnects—and
+                        how we can make their performance more predictable.
+                    </p>
+                    <p>
+                        Previously, I completed an MS in Computer Science at the American University of Beirut with
+                        <a href="https://ielhajj.github.io/" target="_blank" rel="noopener noreferrer">Professor Izzat
+                            El Hajj</a>.
+                    </p>
+                </div>
 
-        <div class="hero-about">
-            <p>
-                I am currently a <em>PhD</em> student in the <a href="https://insight-cal.github.io/team/"
-                    target="_blank" rel="noopener noreferrer">Insight Lab</a>
-                at the University of Virginia, advised by <a href="https://adwaitjog.github.io/" target="_blank"
-                    rel="noopener noreferrer">Professor Adwait Jog</a>.
-                I hold a <em>Master of Science</em> in <strong>Computer Science</strong> from the American University of
-                Beirut, advised by
-                <a href="https://ielhajj.github.io/" target="_blank" rel="noopener noreferrer">Professor Izzat El
-                    Hajj</a>.
-            </p>
+                <div class="hero-cta">
+                    <a class="button primary" href="#publications"><i class="fa fa-book"></i> Explore publications</a>
+                    <a class="button" href="mailto:npv2tk@virginia.edu"><i class="fa fa-envelope"></i> Get in touch</a>
+                    <a class="button" href="MohammadSonji_CV.pdf" target="_blank" rel="noopener noreferrer"><i
+                            class="fa fa-file-pdf-o"></i> CV</a>
+                </div>
 
-            <p class="hero-interests">
-                Research interests: GPU systems (utilization, multi-tenancy, interconnect/memory behavior),
-                high-performance computing, and performance analysis/modeling.
-            </p>
-        </div>
-
-        <div class="contact-grid">
-            <div class="contact-item">
-                <i class="fa fa-university"></i>
-                <span>University of Virginia</span>
+                <div class="hero-links" aria-label="Profiles">
+                    <a href="https://scholar.google.com/citations?hl=en&amp;user=a3n1qFoAAAAJ" target="_blank"
+                        rel="noopener noreferrer">Google Scholar ↗</a>
+                    <a href="https://github.com/msonji" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                    <a href="https://www.linkedin.com/in/mohammad-sonji" target="_blank"
+                        rel="noopener noreferrer">LinkedIn ↗</a>
+                </div>
             </div>
 
-            <div class="contact-item">
-                <i class="fa fa-map-marker"></i>
-                <span>Charlottesville, VA 22903</span>
+            <div class="hero-photo">
+                <img src="profile.jpeg" alt="Portrait of Mohammad Sonji" class="profile-image" width="768"
+                    height="1024" fetchpriority="high">
+                <div class="photo-note">Based in Charlottesville, Virginia</div>
             </div>
+        </div>
+    </section>
 
-            <a href="mailto:npv2tk@virginia.edu" class="contact-item">
-                <i class="fa fa-envelope"></i>
-                <span>npv2tk@virginia.edu</span>
-            </a>
+    <!-- Research Section -->
+    <section class="section" id="research">
+        <div class="section-header">
+            <div class="section-heading-group">
+                <div class="section-number">01 / Research</div>
+                <h2 class="section-title">Systems, measured from the inside out.</h2>
+                <div class="section-divider"></div>
+            </div>
+            <p class="section-intro">My work connects architectural behavior with application-level outcomes, with an
+                emphasis on GPU and high-performance systems.</p>
+        </div>
 
-            <a href="https://scholar.google.com/citations?hl=en&amp;user=a3n1qFoAAAAJ" target="_blank"
-                rel="noopener noreferrer" class="contact-item">
-                <i class="fa-brands fa-google-scholar"></i>
-                <span>Google Scholar</span>
-            </a>
-
-            <a href="MohammadSonji_CV.pdf" target="_blank" rel="noopener noreferrer" class="contact-item">
-                <i class="fa fa-file-pdf-o"></i>
-                <span>Curriculum Vitae</span>
-            </a>
-
-            <a href="https://www.linkedin.com/in/mohammad-sonji" target="_blank" rel="noopener noreferrer"
-                class="contact-item">
-                <i class="fa fa-linkedin"></i>
-                <span>LinkedIn</span>
-            </a>
-
-            <a href="https://github.com/msonji" target="_blank" rel="noopener noreferrer" class="contact-item">
-                <i class="fa fa-github"></i>
-                <span>GitHub</span>
-            </a>
+        <div class="focus-grid">
+            <article class="focus-card">
+                <span class="focus-number">01</span>
+                <h3>GPU systems</h3>
+                <p>Utilization, multi-tenancy, confidential computing, and the performance effects of memory and
+                    interconnect behavior.</p>
+            </article>
+            <article class="focus-card">
+                <span class="focus-number">02</span>
+                <h3>Performance intelligence</h3>
+                <p>Performance variability, execution modeling, and predictions that help systems make better runtime
+                    decisions.</p>
+            </article>
+            <article class="focus-card">
+                <span class="focus-number">03</span>
+                <h3>Emerging architectures</h3>
+                <p>Unified system memory, serverless GPU analytics, and hybrid compute-memory systems across new
+                    technology boundaries.</p>
+            </article>
         </div>
     </section>
 
     <!-- News Section -->
     <section class="section" id="news">
         <div class="section-header">
-            <div class="section-number">01</div>
-            <h2 class="section-title">News</h2>
-            <div class="section-divider"></div>
+            <div class="section-heading-group">
+                <div class="section-number">02 / Updates</div>
+                <h2 class="section-title">Recent news.</h2>
+                <div class="section-divider"></div>
+            </div>
+            <p class="section-intro">Selected research, teaching, and community updates.</p>
         </div>
 
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-date">June 2026</div>
-                <div class="timeline-content">Attending <b>ISCA 2026</b>! See you there.</div>
+                <div class="timeline-content">Presented <b>Understanding Unified System Memory in Emerging
+                        Superchips</b> at <a href="https://yarch2026.epfl.ch/" target="_blank"
+                        rel="noopener noreferrer">YArch 2026</a>.</div>
             </div>
             <div class="timeline-item">
-                <div class="timeline-date">2026</div>
-                <div class="timeline-content">Received <b>ISCA 2026</b> and <b>YArch 2026</b> travel grants.</div>
+                <div class="timeline-date">June 2026</div>
+                <div class="timeline-content">Received travel grants for <b>ISCA 2026</b> and <b>YArch 2026</b>.</div>
             </div>
             <div class="timeline-item">
-                <div class="timeline-date">2026</div>
-                <div class="timeline-content">A paper got accepted at <b>YArch 2026</b>!</div>
+                <div class="timeline-date">May 2026</div>
+                <div class="timeline-content"><b>Are We There Yet?</b> appeared at <b>ACM/SPEC ICPE 2026</b>.</div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-date">April 2026</div>
-                <div class="timeline-content"><b>AWTY</b> got accepted at <b>ICPE 2026</b>!</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">April 2026</div>
-                <div class="timeline-content"><b>HIBISCUS</b> got accepted at <b>ISPASS 2026</b>!</div>
+                <div class="timeline-content"><b>HIBISCUS</b> appeared at <b>IEEE ISPASS 2026</b>.</div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-date">Spring 2026</div>
-                <div class="timeline-content">Passed my Qualifying Exam Proposal.</div>
+                <div class="timeline-content">Passed my PhD qualifying exam proposal.</div>
             </div>
         </div>
     </section>
@@ -1037,101 +1375,155 @@
     <!-- Publications Section -->
     <section class="section" id="publications">
         <div class="section-header">
-            <div class="section-number">02</div>
-            <h2 class="section-title">Publications</h2>
-            <div class="section-divider"></div>
+            <div class="section-heading-group">
+                <div class="section-number">03 / Publications</div>
+                <h2 class="section-title">Papers &amp; presentations.</h2>
+                <div class="section-divider"></div>
+            </div>
+            <p class="section-intro">Peer-reviewed research with direct links to papers, presentation slides, DOI
+                records, and artifacts when available.</p>
         </div>
 
         <div class="pub-grid">
             <article class="pub-item">
-                <div class="pub-title">
-                    Hibiscus: End-to-end Architectural Simulation Framework for Hybrid SFQ/CMOS-Memory Compute Systems
+                <div class="pub-side">
+                    <span class="pub-year">2026</span>
+                    <span class="pub-type">Conference paper</span>
                 </div>
-                <div class="pub-meta">
-                    Ryan Marsala, Yerzhan Mustafa, Prabhath Tangella, <b>Mohammad Sonji</b>, George Michelogiannakis,
-                    Selcuk Kose, Adwait Jog, Mehmet Belviranli ·
-                    <span class="pub-venue">IEEE ISPASS 2026</span>
-                </div>
-            </article>
-
-            <article class="pub-item">
-                <div class="pub-title">
-                    <a href="https://www.computer.org/csdl/proceedings-article/ispass/2025/029400a108/28VRrEEzfO0"
-                        target="_blank" rel="noopener noreferrer">
-                        Dissecting Performance Overheads of Confidential Computing on GPU-based Systems
-                    </a>
-                </div>
-                <div class="pub-meta">
-                    Yang Yang, <b>Mohammad Sonji</b>, Adwait Jog ·
-                    <span class="pub-venue">IEEE ISPASS 2025</span>
-                </div>
-                <div class="pub-chips">
-                    <a class="chip" href="https://adwaitjog.github.io/docs/pdf/dissectcc-ispass25.pdf" target="_blank"
-                        rel="noopener noreferrer">
-                        <i class="fa fa-file-pdf-o"></i>PDF
-                    </a>
-                    <a class="chip" href="https://elio-yang.github.io/file/ispass-25-slides.pdf" target="_blank"
-                        rel="noopener noreferrer">
-                        <i class="fa fa-file-powerpoint-o"></i>Slides
-                    </a>
-                    <a class="chip" href="https://doi.org/10.1109/ISPASS64960.2025.00020" target="_blank"
-                        rel="noopener noreferrer">
-                        <i class="fa fa-link"></i>DOI
-                    </a>
-                    <a class="chip" href="https://github.com/insight-cal-uva/hcc-ispass25-artifact" target="_blank"
-                        rel="noopener noreferrer">
-                        <i class="fa fa-github"></i>Artifact
-                    </a>
+                <div class="pub-body">
+                    <div class="pub-title">
+                        <a href="https://doi.org/10.1109/ISPASS69572.2026.00028" target="_blank"
+                            rel="noopener noreferrer">Hibiscus: End-to-end Architectural Simulation Framework for
+                            Hybrid SFQ/CMOS-Memory Compute Systems</a>
+                    </div>
+                    <div class="pub-meta">
+                        Ryan Marsala, Yerzhan Mustafa, Prabhath Tangella, <b>Mohammad Sonji</b>, George Michelogiannakis,
+                        Selcuk Kose, Adwait Jog, Mehmet Belviranli ·
+                        <span class="pub-venue">IEEE ISPASS 2026</span>
+                    </div>
+                    <div class="pub-chips">
+                        <a class="chip" href="https://doi.org/10.1109/ISPASS69572.2026.00028" target="_blank"
+                            rel="noopener noreferrer"><i class="fa fa-link" aria-hidden="true"></i>DOI</a>
+                    </div>
                 </div>
             </article>
 
             <article class="pub-item">
-                <div class="pub-title">
-                    <a href="https://scholar.google.com/scholar?q=Are%20We%20There%20Yet%3F%20Predicting%20if%20Executing%20Applications%20are%20Near%20Completion"
-                        target="_blank" rel="noopener noreferrer">
-                        Are We There Yet? Predicting if Executing Applications are Near Completion
-                    </a>
+                <div class="pub-side">
+                    <span class="pub-year">2026</span>
+                    <span class="pub-type">Conference paper</span>
                 </div>
-                <div class="pub-meta">
-                    <b>M. Sonji</b>, M. Baydoun, S. Diab, A. Nassereldine, P. Bruel, A. Dhakal, R. Enriquez, G.
-                    Rattihalli, D. Tootaghaj, G. Renaud, B. Chapman, F. Salem, E. Frachtenberg, D. Milojicic, I. Hajj ·
-                    <span class="pub-venue">ACM/SPEC ICPE 2026</span>
-                </div>
-            </article>
-
-            <article class="pub-item">
-                <div class="pub-title">
-                    <a href="https://doi.org/10.1109/IPDPSW66978.2025.00044" target="_blank" rel="noopener noreferrer">
-                        Predicting Performance Variability
-                    </a>
-                </div>
-                <div class="pub-meta">
-                    M. Baydoun, <b>M. Sonji</b>, P. Bruel, D. Milojicic, E. Frachtenberg, I. El Hajj ·
-                    <span class="pub-venue">IPDPSW (iWAPT) 2025</span>
-                </div>
-                <div class="pub-chips">
-                    <a class="chip" href="https://doi.org/10.1109/IPDPSW66978.2025.00044" target="_blank"
-                        rel="noopener noreferrer">
-                        <i class="fa fa-link"></i>DOI
-                    </a>
+                <div class="pub-body">
+                    <div class="pub-title">
+                        <a href="https://ielhajj.github.io/publications/paper/paper-awty-icpe26.pdf" target="_blank"
+                            rel="noopener noreferrer">Are We There Yet? Predicting if Executing Applications are Near
+                            Completion</a>
+                    </div>
+                    <div class="pub-meta">
+                        <b>Mohammad Sonji</b>, Mohammed Baydoun, Safaa Diab, Amir Nassereldine, Pedro Bruel, Aditya
+                        Dhakal, Rolando P. Hong Enriquez, Gourav Rattihalli, Diman Zad Tootaghaj, Gallig Renaud, Barbara
+                        Chapman, Fatima Abu Salem, Eitan Frachtenberg, Dejan Milojicic, Izzat El Hajj ·
+                        <span class="pub-venue">ACM/SPEC ICPE 2026</span>
+                    </div>
+                    <div class="pub-chips">
+                        <a class="chip" href="https://ielhajj.github.io/publications/paper/paper-awty-icpe26.pdf"
+                            target="_blank" rel="noopener noreferrer"><i class="fa fa-file-pdf-o"
+                                aria-hidden="true"></i>Paper</a>
+                        <a class="chip" href="https://ielhajj.github.io/publications/slides/slides-awty-icpe26.pptx"
+                            target="_blank" rel="noopener noreferrer"><i class="fa fa-file-powerpoint-o"
+                                aria-hidden="true"></i>Slides</a>
+                        <a class="chip" href="https://doi.org/10.1145/3777884.3796991" target="_blank"
+                            rel="noopener noreferrer"><i class="fa fa-link" aria-hidden="true"></i>DOI</a>
+                    </div>
                 </div>
             </article>
 
             <article class="pub-item">
-                <div class="pub-title">
-                    <a href="https://doi.org/10.1109/IPDPSW66978.2025.00124" target="_blank" rel="noopener noreferrer">
-                        Serverless Graph Analytics on Multi-Instance GPU
-                    </a>
+                <div class="pub-side">
+                    <span class="pub-year">2025</span>
+                    <span class="pub-type">Conference paper</span>
                 </div>
-                <div class="pub-meta">
-                    <b>M. Sonji</b>, M. Baydoun, A. Dhakal, G. Rattihalli, D. Milojicic, I. El Hajj ·
-                    <span class="pub-venue">IPDPSW (GrAPL) 2025</span>
+                <div class="pub-body">
+                    <div class="pub-title">
+                        <a href="https://adwaitjog.github.io/docs/pdf/dissectcc-ispass25.pdf" target="_blank"
+                            rel="noopener noreferrer">Dissecting Performance Overheads of Confidential Computing on
+                            GPU-based Systems</a>
+                    </div>
+                    <div class="pub-meta">
+                        Yang Yang, <b>Mohammad Sonji</b>, Adwait Jog ·
+                        <span class="pub-venue">IEEE ISPASS 2025</span>
+                    </div>
+                    <div class="pub-chips">
+                        <a class="chip" href="https://adwaitjog.github.io/docs/pdf/dissectcc-ispass25.pdf"
+                            target="_blank" rel="noopener noreferrer"><i class="fa fa-file-pdf-o"
+                                aria-hidden="true"></i>Paper</a>
+                        <a class="chip" href="https://elio-yang.github.io/file/ispass-25-slides.pdf" target="_blank"
+                            rel="noopener noreferrer"><i class="fa fa-file-powerpoint-o"
+                                aria-hidden="true"></i>Slides</a>
+                        <a class="chip" href="https://doi.org/10.1109/ISPASS64960.2025.00020" target="_blank"
+                            rel="noopener noreferrer"><i class="fa fa-link" aria-hidden="true"></i>DOI</a>
+                        <a class="chip" href="https://github.com/insight-cal-uva/hcc-ispass25-artifact" target="_blank"
+                            rel="noopener noreferrer"><i class="fa fa-github" aria-hidden="true"></i>Artifact</a>
+                    </div>
                 </div>
-                <div class="pub-chips">
-                    <a class="chip" href="https://doi.org/10.1109/IPDPSW66978.2025.00124" target="_blank"
-                        rel="noopener noreferrer">
-                        <i class="fa fa-link"></i>DOI
-                    </a>
+            </article>
+
+            <article class="pub-item">
+                <div class="pub-side">
+                    <span class="pub-year">2025</span>
+                    <span class="pub-type">Workshop paper</span>
+                </div>
+                <div class="pub-body">
+                    <div class="pub-title">
+                        <a href="https://ielhajj.github.io/publications/paper/paper-variability-iwapt25.pdf"
+                            target="_blank" rel="noopener noreferrer">Predicting Performance Variability</a>
+                    </div>
+                    <div class="pub-meta">
+                        Mohammed Baydoun, <b>Mohammad Sonji</b>, Pedro Bruel, Dejan Milojicic, Eitan Frachtenberg,
+                        Izzat El Hajj · <span class="pub-venue">IPDPSW (iWAPT) 2025</span>
+                    </div>
+                    <div class="pub-chips">
+                        <a class="chip"
+                            href="https://ielhajj.github.io/publications/paper/paper-variability-iwapt25.pdf"
+                            target="_blank" rel="noopener noreferrer"><i class="fa fa-file-pdf-o"
+                                aria-hidden="true"></i>Paper</a>
+                        <a class="chip"
+                            href="https://ielhajj.github.io/publications/slides/slides-variability-iwapt25.pptx"
+                            target="_blank" rel="noopener noreferrer"><i class="fa fa-file-powerpoint-o"
+                                aria-hidden="true"></i>Slides</a>
+                        <a class="chip" href="https://doi.org/10.1109/IPDPSW66978.2025.00044" target="_blank"
+                            rel="noopener noreferrer"><i class="fa fa-link" aria-hidden="true"></i>DOI</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="pub-item">
+                <div class="pub-side">
+                    <span class="pub-year">2025</span>
+                    <span class="pub-type">Workshop paper</span>
+                </div>
+                <div class="pub-body">
+                    <div class="pub-title">
+                        <a href="https://ielhajj.github.io/publications/paper/paper-serverless-graph-grapl25.pdf"
+                            target="_blank" rel="noopener noreferrer">Serverless Graph Analytics on Multi-Instance
+                            GPU</a>
+                    </div>
+                    <div class="pub-meta">
+                        <b>Mohammad Sonji</b>, Mohammed Baydoun, Aditya Dhakal, Gourav Rattihalli, Dejan Milojicic,
+                        Izzat El Hajj · <span class="pub-venue">IPDPSW (GrAPL) 2025</span>
+                    </div>
+                    <div class="pub-chips">
+                        <a class="chip"
+                            href="https://ielhajj.github.io/publications/paper/paper-serverless-graph-grapl25.pdf"
+                            target="_blank" rel="noopener noreferrer"><i class="fa fa-file-pdf-o"
+                                aria-hidden="true"></i>Paper</a>
+                        <a class="chip"
+                            href="https://ielhajj.github.io/publications/slides/slides-serverless-graph-grapl25.pptx"
+                            target="_blank" rel="noopener noreferrer"><i class="fa fa-file-powerpoint-o"
+                                aria-hidden="true"></i>Slides</a>
+                        <a class="chip" href="https://doi.org/10.1109/IPDPSW66978.2025.00124" target="_blank"
+                            rel="noopener noreferrer"><i class="fa fa-link" aria-hidden="true"></i>DOI</a>
+                    </div>
                 </div>
             </article>
         </div>
@@ -1140,9 +1532,12 @@
     <!-- Service & Honors Section -->
     <section class="section" id="service">
         <div class="section-header">
-            <div class="section-number">03</div>
-            <h2 class="section-title">Service &amp; Honors</h2>
-            <div class="section-divider"></div>
+            <div class="section-heading-group">
+                <div class="section-number">04 / Community</div>
+                <h2 class="section-title">Service &amp; honors.</h2>
+                <div class="section-divider"></div>
+            </div>
+            <p class="section-intro">Contributions to the research community and recognition supporting my work.</p>
         </div>
 
         <div class="service-grid">
@@ -1175,9 +1570,13 @@
     <!-- Experience Section -->
     <section class="section" id="experience">
         <div class="section-header">
-            <div class="section-number">04</div>
-            <h2 class="section-title">Experience</h2>
-            <div class="section-divider"></div>
+            <div class="section-heading-group">
+                <div class="section-number">05 / Experience</div>
+                <h2 class="section-title">Research &amp; teaching.</h2>
+                <div class="section-divider"></div>
+            </div>
+            <p class="section-intro">Selected research and teaching experience across UVA, AUB, and Hewlett Packard
+                Labs.</p>
         </div>
 
         <div class="exp-grid">
@@ -1232,11 +1631,18 @@
             </article>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p>© Mohammad Sonji</p>
+            <p>© <span id="currentYear">2026</span> Mohammad Sonji</p>
+            <div class="footer-links">
+                <a href="mailto:npv2tk@virginia.edu">Email</a>
+                <a href="MohammadSonji_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+                <a href="https://scholar.google.com/citations?hl=en&amp;user=a3n1qFoAAAAJ" target="_blank"
+                    rel="noopener noreferrer">Scholar</a>
+            </div>
         </div>
     </footer>
 
@@ -1246,85 +1652,82 @@
     </a>
 
     <script>
-        // Dark Mode Logic
         const themeToggle = document.getElementById('themeToggle');
         const htmlElement = document.documentElement;
         const icon = themeToggle.querySelector('i');
+        const themeColor = document.querySelector('meta[name="theme-color"]');
 
-        // Check for saved theme preference or system preference
         const savedTheme = localStorage.getItem('theme');
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
 
-        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-            htmlElement.setAttribute('data-theme', 'dark');
-            icon.classList.replace('fa-moon', 'fa-sun');
+        function applyTheme(theme) {
+            const isDark = theme === 'dark';
+            htmlElement.setAttribute('data-theme', theme);
+            icon.className = isDark ? 'fa fa-sun' : 'fa fa-moon';
+            themeToggle.setAttribute('aria-pressed', String(isDark));
+            themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+            themeColor.setAttribute('content', isDark ? '#111622' : '#f7f4ee');
         }
+
+        applyTheme(initialTheme);
 
         themeToggle.addEventListener('click', () => {
             const currentTheme = htmlElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-            htmlElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-
-            if (newTheme === 'dark') {
-                icon.classList.replace('fa-moon', 'fa-sun');
-            } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-            }
+            applyTheme(newTheme);
         });
 
-        // Scroll Progress Bar
-        window.addEventListener('scroll', () => {
+        const scrollProgress = document.getElementById('scrollProgress');
+        const backToTop = document.getElementById('backToTop');
+
+        function updateScrollUI() {
             const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById('scrollProgress').style.width = scrolled + '%';
-        });
+            scrollProgress.style.width = (height > 0 ? (winScroll / height) * 100 : 0) + '%';
+            backToTop.classList.toggle('visible', window.scrollY > 500);
+        }
 
-        // Back to Top Button Visibility
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
+        window.addEventListener('scroll', updateScrollUI, { passive: true });
+        updateScrollUI();
 
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        const revealElements = document.querySelectorAll(
+            '.section-header, .pub-item, .service-card, .exp-card, .timeline-item, .skill-chip'
+        );
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-        // Observe all animated elements
-        document.querySelectorAll('.section-header, .pub-item, .service-card, .exp-card, .timeline-item, .skill-chip').forEach(el => {
-            observer.observe(el);
-        });
+            revealElements.forEach(element => revealObserver.observe(element));
 
-        // Smooth scroll for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const target = document.querySelector(targetId);
-
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
                     });
-                }
-            });
+                });
+            }, { rootMargin: '-28% 0px -62% 0px' });
+
+            document.querySelectorAll('main section[id]').forEach(section => sectionObserver.observe(section));
+        } else {
+            revealElements.forEach(element => element.classList.add('visible'));
+        }
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (!localStorage.getItem('theme')) {
+                applyTheme(event.matches ? 'dark' : 'light');
+            }
         });
     </script>
 </body>
