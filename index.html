@@ -626,6 +626,27 @@
             font-size: 0.8rem;
         }
 
+        .news-toggle {
+            margin-top: 0.55rem;
+            padding: 0.2rem 0;
+            border: 0;
+            border-bottom: 1px solid var(--orange);
+            background: transparent;
+            color: var(--accent);
+            font: inherit;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .news-toggle:hover {
+            color: var(--accent-hover);
+        }
+
+        .news-toggle[hidden] {
+            display: none;
+        }
+
         .publication-list {
             gap: 0;
         }
@@ -837,7 +858,7 @@
 
         <section class="section" id="news">
             <h2 class="section-heading">News</h2>
-            <dl class="news-list">
+            <dl class="news-list" id="newsList">
                 <div class="news-item">
                     <dt>Jun 2026</dt>
                     <dd>Presented <strong>Understanding Unified System Memory in Emerging Superchips</strong> at
@@ -861,6 +882,8 @@
                     <dd>Passed my PhD qualifying exam.</dd>
                 </div>
             </dl>
+            <button class="news-toggle" id="newsToggle" type="button" aria-controls="newsList"
+                aria-expanded="false" hidden>Show older news</button>
         </section>
 
         <section class="section" id="publications">
@@ -1035,6 +1058,27 @@
         <p>© 2026 Mohammad Sonji</p>
         <p><a href="mailto:npv2tk@virginia.edu">npv2tk@virginia.edu</a></p>
     </footer>
+
+    <script>
+        (() => {
+            const visibleCount = 5;
+            const newsItems = Array.from(document.querySelectorAll('#newsList .news-item'));
+            const toggle = document.getElementById('newsToggle');
+
+            if (!toggle || newsItems.length <= visibleCount) return;
+
+            const olderItems = newsItems.slice(visibleCount);
+            olderItems.forEach(item => { item.hidden = true; });
+            toggle.hidden = false;
+
+            toggle.addEventListener('click', () => {
+                const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                olderItems.forEach(item => { item.hidden = expanded; });
+                toggle.setAttribute('aria-expanded', String(!expanded));
+                toggle.textContent = expanded ? 'Show older news' : 'Show recent news only';
+            });
+        })();
+    </script>
 
     <script data-goatcounter="https://msonji.goatcounter.com/count"
         async src="https://gc.zgo.at/count.js"></script>
