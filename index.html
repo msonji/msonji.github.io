@@ -765,9 +765,84 @@
         }
 
         @media (max-width: 520px) {
+            html {
+                scroll-padding-top: 5.5rem;
+            }
+
+            .nav-inner {
+                overflow-x: visible;
+                padding-top: 0.25rem;
+                padding-bottom: 0.25rem;
+            }
+
+            .nav-links {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                width: 100%;
+                gap: 0 0.25rem;
+            }
+
+            .nav-links a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 34px;
+                padding: 0.15rem;
+                text-align: center;
+            }
+
             .intro {
-                grid-template-columns: 1fr;
-                gap: 0.9rem;
+                grid-template-columns: minmax(0, 1fr) 110px;
+                align-items: start;
+                gap: 0.8rem 1rem;
+                padding-top: 1.25rem;
+            }
+
+            .intro-copy {
+                display: contents;
+            }
+
+            .eyebrow {
+                grid-column: 1;
+                grid-row: 1;
+                align-self: end;
+            }
+
+            h1 {
+                grid-column: 1;
+                grid-row: 2;
+                align-self: start;
+                margin-bottom: 0;
+                font-size: 2rem;
+            }
+
+            .bio {
+                grid-column: 1 / -1;
+                grid-row: 3;
+            }
+
+            .profile-links {
+                grid-column: 1 / -1;
+                grid-row: 4;
+                margin-top: 0;
+            }
+
+            .profile-links a {
+                display: inline-flex;
+                align-items: center;
+                min-height: 36px;
+                padding: 0 0.15rem;
+            }
+
+            .photo-block {
+                grid-column: 2;
+                grid-row: 1 / 3;
+                width: 110px;
+            }
+
+            .news-toggle {
+                min-height: 40px;
+                padding: 0.45rem 0;
             }
 
             .section {
