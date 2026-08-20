@@ -626,7 +626,7 @@
             font-size: 0.8rem;
         }
 
-        .news-list.is-collapsed .news-item:nth-child(n + 6) {
+        .news-list.is-collapsed .news-item:nth-child(n + 6):not(.is-visible) {
             display: none;
         }
 
@@ -891,8 +891,8 @@
                     <dd><strong>HIBISCUS</strong> appeared at <strong>IEEE ISPASS 2026</strong>.</dd>
                 </div>
             </dl>
-            <button class="news-toggle" id="newsToggle" type="button" aria-controls="newsList"
-                aria-expanded="false">Show older news</button>
+            <button class="news-toggle" id="newsToggle" type="button" aria-controls="newsList">Show older
+                news</button>
         </section>
 
         <section class="section" id="publications">
@@ -1070,22 +1070,23 @@
 
     <script>
         (() => {
-            const visibleCount = 5;
+            const batchSize = 5;
             const newsList = document.getElementById('newsList');
             const newsItems = Array.from(document.querySelectorAll('#newsList .news-item'));
             const toggle = document.getElementById('newsToggle');
+            let visibleCount = Math.min(batchSize, newsItems.length);
 
             if (!newsList || !toggle) return;
-            if (newsItems.length <= visibleCount) {
+            if (newsItems.length <= batchSize) {
                 toggle.hidden = true;
                 return;
             }
 
             toggle.addEventListener('click', () => {
-                const expanded = toggle.getAttribute('aria-expanded') === 'true';
-                newsList.classList.toggle('is-collapsed', expanded);
-                toggle.setAttribute('aria-expanded', String(!expanded));
-                toggle.textContent = expanded ? 'Show older news' : 'Show recent news only';
+                const nextItems = newsItems.slice(visibleCount, visibleCount + batchSize);
+                nextItems.forEach(item => { item.classList.add('is-visible'); });
+                visibleCount += nextItems.length;
+                toggle.hidden = visibleCount >= newsItems.length;
             });
         })();
     </script>
