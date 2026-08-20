@@ -626,6 +626,10 @@
             font-size: 0.8rem;
         }
 
+        .news-list.is-collapsed .news-item:nth-child(n + 6) {
+            display: none;
+        }
+
         .news-toggle {
             margin-top: 0.55rem;
             padding: 0.2rem 0;
@@ -859,7 +863,7 @@
 
         <section class="section" id="news">
             <h2 class="section-heading">News</h2>
-            <dl class="news-list" id="newsList">
+            <dl class="news-list is-collapsed" id="newsList">
                 <div class="news-item">
                     <dt>Summer 2026</dt>
                     <dd>Passed my PhD qualifying exam.</dd>
@@ -888,7 +892,7 @@
                 </div>
             </dl>
             <button class="news-toggle" id="newsToggle" type="button" aria-controls="newsList"
-                aria-expanded="false" hidden>Show older news</button>
+                aria-expanded="false">Show older news</button>
         </section>
 
         <section class="section" id="publications">
@@ -1067,18 +1071,19 @@
     <script>
         (() => {
             const visibleCount = 5;
+            const newsList = document.getElementById('newsList');
             const newsItems = Array.from(document.querySelectorAll('#newsList .news-item'));
             const toggle = document.getElementById('newsToggle');
 
-            if (!toggle || newsItems.length <= visibleCount) return;
-
-            const olderItems = newsItems.slice(visibleCount);
-            olderItems.forEach(item => { item.hidden = true; });
-            toggle.hidden = false;
+            if (!newsList || !toggle) return;
+            if (newsItems.length <= visibleCount) {
+                toggle.hidden = true;
+                return;
+            }
 
             toggle.addEventListener('click', () => {
                 const expanded = toggle.getAttribute('aria-expanded') === 'true';
-                olderItems.forEach(item => { item.hidden = expanded; });
+                newsList.classList.toggle('is-collapsed', expanded);
                 toggle.setAttribute('aria-expanded', String(!expanded));
                 toggle.textContent = expanded ? 'Show older news' : 'Show recent news only';
             });
